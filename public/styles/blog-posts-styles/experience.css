@@ -1,0 +1,108 @@
+/* GRID */
+.container {
+  height: 200vh;
+  display: grid;
+  grid-template-areas:
+    "sidebar header header"
+    "sidebar para-1 para-1"
+    "sidebar para-2 para-2"
+    "sidebar footer footer";
+  grid-template-rows: auto 1fr 1fr auto;
+  grid-template-columns: auto 1fr;
+}
+
+.para-1 {
+  grid-area: para-1;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/programming.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 90vh;
+}
+
+.para-2 {
+  grid-area: para-2;
+  height: 100%;
+  background-color: var(--mainGrey);
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.footer {
+  grid-area: footer;
+  height: 110px;
+}
+/* END OF GRID */
+
+/* PARA-1 */
+.about {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.banner-text {
+  font-size: 80px;
+  text-transform: uppercase;
+  color: var(--mainWhite);
+  font-style: italic;
+  text-align: right;
+}
+.banner-underline {
+  width: 700px;
+  border: 3px solid var(--mainBlue);
+  /* places it in the center */
+  margin: 20px auto 10px auto;
+}
+.about {
+  padding: 10px 60px;
+}
+.about__center {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 90vw;
+  margin: 2rem auto;
+}
+/* END OF PARA-1 *
+
+
+/* PARA-2 */
+.experience {
+  display: flex;
+  justify-content: baseline;
+}
+.experience-header {
+  text-align: center;
+  padding: 20px;
+  font-size: 70px;
+  color: var(--mainBlue);
+  border-bottom: 14px solid var(--darkGrey);
+  border-radius: 70%;
+}
+.experience-text {
+  width: 100%;
+  text-align: justify;
+  text-indent: 30px;
+  padding: 40px 120px;
+  display: block;
+  font-size: 25px;
+  color: #2e4052;
+}
+.experience-img {
+  width: 450px;
+}
+@media screen and (max-width: 576px) {
+  .banner-text {
+    font-size: 60px;
+    text-align: end;
+  }
+  .banner-underline {
+    width: 350px;
+  }
+  .experience-img {
+    display: none;
+  }
+}
+/* END OF PARA-2 */

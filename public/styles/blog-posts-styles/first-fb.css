@@ -1,0 +1,121 @@
+/* GRID */
+.container {
+  height: 200vh;
+  display: grid;
+  grid-template-areas:
+    "sidebar header header"
+    "sidebar para-1 para-1"
+    "sidebar para-2 para-2"
+    "sidebar footer footer";
+  grid-template-rows: auto 1fr 1fr auto;
+  grid-template-columns: auto 1fr;
+}
+
+.para-1 {
+  grid-area: para-1;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/feedback.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.para-2 {
+  grid-area: para-2;
+  height: 100%;
+  background-color: var(--mainGrey);
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.footer {
+  grid-area: footer;
+  height: 110px;
+}
+/* END OF GRID */
+
+/* PARA-1 */
+.about {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.banner-text {
+  font-size: 80px;
+  text-transform: uppercase;
+  color: var(--mainWhite);
+  font-style: italic;
+}
+.banner-underline {
+  width: 500px;
+  border: 3px solid var(--mainBlue);
+  /* places it in the center */
+  margin: 10px auto 10px auto;
+}
+.about {
+  padding: 10px 60px;
+}
+.about__center {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 90vw;
+  margin: 2rem auto;
+}
+/* END OF PARA-1 *
+
+
+/* PARA-2 */
+.feedback-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.feedback-header {
+  display: block;
+  text-align: center;
+  font-size: 60px;
+  /* padding: 10px 0; */
+  color: var(--dark);
+  margin-top: 40px;
+}
+.fw-underline {
+  width: 400px;
+  border: 3px solid var(--mainBlue);
+  /* places it in the center */
+  margin: 5px auto 30px auto;
+}
+.feedback-text-item {
+  color: var(--mainWhite);
+  width: 80%;
+  background: var(--mainBlue);
+  border-radius: 7px;
+  padding: 15px;
+  margin: 20px 0px 20px 0px;
+}
+.positives,
+.negatives {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feedback-pic {
+  width: 300px;
+  margin: 30px;
+}
+
+@media screen and (max-width: 576px) {
+  .feedback-pic {
+    display: none;
+  }
+  .feedback-text-item {
+    width: 100%;
+  }
+  .banner-text {
+    font-size: 70px;
+    text-align: end;
+  }
+  .banner-underline {
+    width: 300px;
+  }
+}
+/* END OF PARA-2 */
