@@ -1,15 +1,15 @@
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use App\Models\Faq;
+use App\Models\Faq;
 
-    class FaqController extends Controller
+class FaqController extends Controller
+{
+    //
+    public function show()
     {
-        //
-        public function show()
-        {
-            $faqs = Faq::all();
-            return view('faq', compact('faqs'));
-        }
+        $faqs = Faq::all();
+        return view('faq', compact('faqs'));
     }
+}
