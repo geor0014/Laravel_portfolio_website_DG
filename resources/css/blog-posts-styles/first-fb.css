@@ -14,12 +14,11 @@
 .para-1 {
   grid-area: para-1;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/images/blog-posts-images/data.jpg);
+    url(/images/blog-posts-images/feedback.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 90vh;
 }
 .para-2 {
   grid-area: para-2;
@@ -67,74 +66,53 @@
 
 
 /* PARA-2 */
-.fw-container {
+.feedback-container {
   display: grid;
   grid-template-columns: 1fr;
 }
-h2 {
-  color: var(--mainBlue);
-  position: relative;
-  width: 100%;
-  font-size: 70px;
-  margin: 50px 0;
-  text-align: center;
-  border-bottom: 14px solid var(--darkGrey);
-  border-radius: 60%;
-  padding: 10px;
-}
-.fw-title {
+.feedback-header {
   display: block;
   text-align: center;
   font-size: 60px;
   /* padding: 10px 0; */
   color: var(--dark);
-  margin-top: 70px;
+  margin-top: 40px;
 }
 .fw-underline {
-  width: 500px;
+  width: 400px;
   border: 3px solid var(--mainBlue);
   /* places it in the center */
   margin: 5px auto 30px auto;
 }
-.fw-text {
+.feedback-text-item {
+  color: var(--mainWhite);
+  width: 80%;
+  background: var(--mainBlue);
+  border-radius: 7px;
+  padding: 15px;
+  margin: 20px 0px 20px 0px;
+}
+.positives,
+.negatives {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2e4052;
 }
-.fw-text p {
-  width: 45%;
-  text-align: justify;
-  text-indent: 30px;
-  align-self: auto;
+.feedback-pic {
+  width: 300px;
+  margin: 30px;
 }
-.fw-img {
-  display: flex;
-  justify-content: center;
-}
-.fw-pic {
-  width: 400px;
-  display: block;
-  border-right: 5px solid var(--darkGrey);
-  border-radius: 25%;
-  margin-bottom: 10px;
-}
+
 @media screen and (max-width: 576px) {
-  .fw-text p {
+  .feedback-pic {
     display: none;
   }
-  .fw-pic {
-    border: none;
+  .feedback-text-item {
+    width: 100%;
   }
   .banner-text {
     font-size: 70px;
-    text-align: right;
-  }
-  .fw-title {
-    font-size: 45px;
-  }
-  .fw-underline {
-    display: none;
+    text-align: end;
   }
   .banner-underline {
     width: 300px;

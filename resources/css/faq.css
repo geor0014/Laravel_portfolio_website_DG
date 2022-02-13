@@ -18,7 +18,7 @@
 .para-1 {
   grid-area: para-1;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(../images/starry2.jpg);
+    url(/images/starry2.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -78,7 +78,7 @@
 .accordion .icon i {
   font-size: 25px;
   color: var(--mainBlue);
-  transition: all 0.5 ease;
+  transition: all 0.5s ease;
 }
 .accordion h5 {
   font-size: 25px;

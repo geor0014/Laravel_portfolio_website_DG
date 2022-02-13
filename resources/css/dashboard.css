@@ -1,0 +1,145 @@
+/* GRID */
+.container {
+    height: 200vh;
+    display: grid;
+    grid-template-areas:
+    "sidebar header header"
+    "sidebar para-1 para-1"
+    "sidebar para-1 para-1"
+    "sidebar footer footer";
+    grid-template-rows: auto 1fr 1fr auto;
+    grid-template-columns: auto 1fr;
+    position: relative;
+}
+
+/* .item {
+  border: 2px solid orange;
+} */
+
+.para-1 {
+    grid-area: para-1;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(/images/starry1.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.footer {
+    grid-area: footer;
+    width: 100%;
+    height: 110px;
+}
+
+/* END OF GRID */
+
+/* PARA-1 */
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nbsa {
+    color: var(--mainBlue);
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
+
+.nbsa h1 {
+    font-size: 35px;
+    padding: 10px 0;
+}
+
+.fa-link {
+    font-size: 35px;
+}
+
+.content-table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgb(0, 0, 0, 60);
+}
+
+td {
+    border: 2px solid var(--lightGrey);
+    transition: 1s ease;
+}
+
+td:hover {
+    background-color: var(--mainBlue);
+}
+
+.content-table thead tr {
+    background-color: var(--mainBlue);
+    color: var(--mainWhite);
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    color: var(--mainWhite);
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 4px solid var(--mainBlue);
+}
+
+/* resposnsive */
+@media screen and (max-width: 576px) {
+    /* .content-table .border-head {
+      display: none;
+    }
+    .content-table,
+    .content-table tbody,
+    .content-table tr,
+    .content-table td {
+      display: block;
+      width: 100%;
+    }
+    .content-table tr {
+      margin-bottom: 15px;
+    }
+    .content-table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    } */
+    .para-1 {
+        height: 590vh;
+    }
+
+    .footer {
+        margin-top: 583vh;
+    }
+
+    .border-head {
+        display: none;
+    }
+
+    td {
+        display: block;
+    }
+
+    .quartile {
+        background: var(--mainBlue);
+        text-align: center;
+    }
+}
+
+/* END OF PARA-1 */

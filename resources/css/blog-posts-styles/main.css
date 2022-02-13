@@ -1,0 +1,243 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+body {
+  background-color: #f5f5f5;
+  font-family: "Fira Sans", sans-serif;
+  /* The overflow-x property specifies whether to clip the content, add a scroll bar, or display overflow content of a block-level element, when it overflows at the left and right edges. */
+  /* overflow-x: hidden; */
+  min-height: 100%;
+  font-weight: 700;
+}
+
+/* these are variables  */
+:root {
+  --mainBlue: #4ba0ea;
+  --mainGrey: #575757;
+  --lightGrey: #c9c9c9;
+  --darkGrey: #959595;
+  --dark: #191919;
+  --mainWhite: #e0e2db;
+  --mainYellow: #e6af2e;
+  --mainGrey: #beb7a4;
+}
+/* NAVBAR */
+.index-header {
+  /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(./images/head.jpeg) center/cover no-repeat fixed; */
+  grid-area: header;
+  background-color: #f5f5f5;
+  position: sticky;
+  top: 0;
+  z-index: 9000;
+  width: 100%;
+}
+/* NAVBUTTON */
+.nav-btn {
+  color: var(--mainBlue);
+  cursor: pointer;
+  margin: 0 40px;
+}
+.fa-bars {
+  font-size: 40px;
+  animation: breathe 2s ease-in-out infinite;
+}
+/* animation */
+@keyframes breathe {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+/* END OF NAVBUTTON */
+
+.fa-home,
+.fa-blog,
+.fa-columns,
+.fa-question-circle,
+.fa-id-badge {
+  font-size: 28px;
+  margin-right: 5px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark);
+  height: 90px;
+}
+.active {
+  border: 3px solid var(--mainWhite);
+  border-radius: 3rem;
+}
+.list-item {
+  padding: 20px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+.list-item:hover {
+  background: var(--mainWhite);
+  border-radius: 3rem;
+  box-shadow: 0 10px 5px #191500;
+}
+li,
+a {
+  font-size: 24px;
+  margin: 0 2px;
+  color: var(--mainBlue);
+  text-decoration: none;
+  display: flex;
+}
+.profile-pic,
+.hz-logo {
+  border-radius: 70px;
+  margin: 10px 0;
+}
+.hz-logo {
+  height: 80px;
+  cursor: pointer;
+}
+.profile-pic {
+  max-width: 65px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 576px) {
+  .nav-links {
+    height: auto;
+  }
+  .index-header {
+    position: initial;
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li,
+  a {
+    font-size: 30px;
+  }
+
+  .fa-home,
+  .fa-blog,
+  .fa-columns,
+  .fa-question-circle,
+  .fa-id-badge {
+    font-size: 30px;
+  }
+
+  nav ul li {
+    flex: 1 0 calc(50%);
+    margin: 5px 10px;
+  }
+
+  .nav-btn {
+    /* display: inline; */
+    margin-top: 25px;
+    margin-left: 10;
+    margin-bottom: 40px;
+  }
+
+  .fa-bars {
+    font-size: 60px;
+  }
+
+  .hz-logo {
+    display: none;
+  }
+
+  .profile-pic {
+    display: none;
+  }
+}
+/* END OF NAVBAR */
+/* SIDEBAR */
+.slidebar {
+  height: 100%;
+  width: 0%;
+  position: fixed;
+  z-index: 9001;
+  top: 0;
+  left: 0;
+  background: #1e90ff;
+  /* opacity: 0.99; */
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.7s ease;
+}
+.slidebar a {
+  display: block;
+  padding: 30px 30px;
+  font-size: 25px;
+  text-decoration: none;
+}
+.slidebar a:hover {
+  color: var(--dark);
+  transition: 0.4s;
+}
+.slidebar .close {
+  position: absolute;
+  top: -17px;
+  right: 22px;
+}
+.fa-times {
+  font-size: 35px;
+  transition: transform 0.7s ease-in-out;
+}
+.fa-times:hover {
+  transform: rotate(360deg);
+}
+.sidebar-link,
+.close {
+  color: #f5f5f5;
+}
+
+.sidebar-link {
+  transition: ease;
+}
+.sidebar-link:hover {
+  background: var(--lightGrey);
+  /* border-radius: 3rem; */
+  box-shadow: 0 10px 5px #191500;
+}
+/* END OF SIDEBAR */
+
+/* FOOTER */
+.footer {
+  padding: 40px 0;
+  border-top: 0.5rem solid var(--mainBlue);
+  background-color: var(--dark);
+}
+.footer-icons {
+  display: flex;
+  justify-content: space-evenly;
+  /* margin: 15px; */
+}
+.footer-single-icon {
+  color: var(--mainBlue);
+  transition: all 1s ease;
+}
+.fab {
+  font-size: 35px;
+}
+.footer-single-icon:hover {
+  color: var(--mainWhite);
+  /* moves it up */
+  transform: translateY(-1rem);
+}
+/* END OF FOOTER */
