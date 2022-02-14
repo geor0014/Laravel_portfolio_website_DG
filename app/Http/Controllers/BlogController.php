@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Article;
 
 class BlogController extends Controller
 {
     //
 
-    public function show()
+    public function show ()
     {
-        return view('blog');
+        $article = Article::latest()->get();
+
+        return view('blog',['articles' => $article]);
     }
 }

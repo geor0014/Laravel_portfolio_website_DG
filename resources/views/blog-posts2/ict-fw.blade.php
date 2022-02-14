@@ -2,11 +2,11 @@
 
 @section('styles')
     <!-- CSS -->
-    <link rel="stylesheet" href="/styles/blog-posts-styles/field-of-work.css" />
-    <link rel="stylesheet" href="/styles/blog-posts-styles/main.css" />
+    <link rel="stylesheet" href="/styles/blog-posts-styles/field-of-work.css"/>
+    <link rel="stylesheet" href="/styles/blog-posts-styles/main.css"/>
 
     <!-- FONTAWESOME -->
-    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css"/>
 @endsection
 
 
@@ -40,7 +40,12 @@
                 <h3 class="fw-title">The Data Analyst</h3>
                 <div class="fw-underline"></div>
                 <div class="fw-text">
-                    <p >An outstanding analyst is the very prerequisite for the success of your data efforts. A solid background in statistics is what brings rigor to data-driven decision-making. A data analyst looks at industry data to answer business-relevant questions and delivers these answers to the relevant teams. Data analysts transform large data sets, form hypotheses, and communicate these to business decision-makers. So they need to demonstrate a strong sense of the processes taking place beyond the data.</p>
+                    <p>An outstanding analyst is the very prerequisite for the success of your data efforts. A solid
+                        background in statistics is what brings rigor to data-driven decision-making. A data analyst
+                        looks at industry data to answer business-relevant questions and delivers these answers to the
+                        relevant teams. Data analysts transform large data sets, form hypotheses, and communicate these
+                        to business decision-makers. So they need to demonstrate a strong sense of the processes taking
+                        place beyond the data.</p>
                     <div class="fw-img">
 
                         <img src="/images/blog-posts-images/data-analyst.png" alt="" class="fw-pic">
@@ -54,7 +59,10 @@
                 <div class="fw-underline"></div>
                 <div class="fw-text">
 
-                    <p >This may involve anything from data analytics to building machine learning models that predict the future based on past data. Unlike analysts, data scientists do not stick to the facts entirely. They have more space to develop their own ideas or discover patterns in the data that seem worth pursuing..</p>
+                    <p>This may involve anything from data analytics to building machine learning models that predict
+                        the future based on past data. Unlike analysts, data scientists do not stick to the facts
+                        entirely. They have more space to develop their own ideas or discover patterns in the data that
+                        seem worth pursuing..</p>
                     <div class="fw-img">
 
                         <img src="/images/blog-posts-images/data scientist.png" alt="" class="fw-pic">
@@ -67,10 +75,13 @@
                 <h3 class="fw-title">The Data Engineer</h3>
                 <div class="fw-underline"></div>
                 <div class="fw-text">
-                    <p >This is a software-development-intensive role that thrives on programming skills and the ability to make data tangible to data scientists. Data engineers manage large datasets, do the data cleaning, aggregation, and ETL processes. But they also build data pipelines to get the data to the analysts and scientists within an organization.</p>
+                    <p>This is a software-development-intensive role that thrives on programming skills and the ability
+                        to make data tangible to data scientists. Data engineers manage large datasets, do the data
+                        cleaning, aggregation, and ETL processes. But they also build data pipelines to get the data to
+                        the analysts and scientists within an organization.</p>
                     <div class="fw-img">
 
-                        <img src="/images/blog-posts-images/data-engeneer.png"  class="fw-pic" alt="">
+                        <img src="/images/blog-posts-images/data-engeneer.png" class="fw-pic" alt="">
                     </div>
                 </div>
 
