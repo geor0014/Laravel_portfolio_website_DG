@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/styles/faq.css"/>
 @endsection
 @section('javascript')
-    <script src="./scripts/main.js"></script>
+    <script src="/scripts/main.js"></script>
 @endsection
 
 
@@ -12,22 +12,20 @@
     <!-- PARAGRAPH 1 -->
     <section class="item para-1">
         <div id="faq-container">
-            <h2>Freqently Asked Questions</h2>
+            <h2>Submit an FAQ</h2>
+            <form action="/faq" method="POST">
+                @csrf
+                <br>
+                <input type="text" name="question" placeholder="Question" style="width:14rem; padding:.5rem;
+                border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
 
-        @foreach($faqs as $faq)
-            <!-- one question -->
-                <div class="accordion">
-                    <div class="icon"><i class="fas fa-plus-circle"></i></div>
-                    <h5>{{$faq->question}}</h5>
-                </div>
-                <div class="panel">
-                    <p>{{$faq->answer}}</p>
-                    <button  style="padding:.5rem; background:transparent; border:none; color:#4ba0ea"><a
-                            href="faq/{{$faq->id}}/edit">Edit</a></button>
-                </div>
-                <!-- end of one question -->
-            @endforeach
-            <a href="faq/create" class="create">Add FAQ</a>
+                <br>
+                <input type="text" name="answer" placeholder="Answer" style="width:14rem; padding:.5rem;
+                border:2px solid #4ba0ea; color:white; font-size:25px;background:transparent;"><br><br>
+
+                <input type="submit" value="Submit" style="background:transparent; text-decoration: none;
+                background-color:#4ba0ea; padding:.5rem; border-radius:.5rem; border:none;">
+            </form>
         </div>
     </section>
     <!-- END OF PARAGRAPH 1 -->
@@ -53,5 +51,5 @@
 @endsection
 
 @section('scripts')
-    <script src="./scripts/faq.js"></script>
+    <script src="/scripts/faq.js"></script>
 @endsection

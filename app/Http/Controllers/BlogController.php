@@ -8,10 +8,18 @@ class BlogController extends Controller
 {
     //
 
-    public function show ()
+    // Shows ALL articles
+    public function index()
     {
         $article = Article::latest()->get();
 
-        return view('blog',['articles' => $article]);
+        return view('blog', ['articles' => $article]);
+    }
+
+    // Shows a SINGLE article
+    public function show($id)
+    {
+        $article = Article::find($id);
+        return view("blog-posts.show", ['article' => $article]);
     }
 }

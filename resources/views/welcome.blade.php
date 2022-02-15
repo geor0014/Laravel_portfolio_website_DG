@@ -1,18 +1,12 @@
 @extends('layout')
 
 @section('styles')
-    <!-- CSS -->
-    <link rel="stylesheet"
-          href="./styles/main.css">
     <link rel="stylesheet"
           href="./styles/index.css"/>
-    <!-- FONTAWESOME -->
-    <link rel="stylesheet"
-          href="./fontawesome-free-5.15.4-web/css/all.css"/>
-@endsection()
+@endsection
 
-@section('java')
-    <script src="./scripts/main.js"></script>
+@section('javascript')
+    <script src="/scripts/main.js"></script>
 @endsection
 
 

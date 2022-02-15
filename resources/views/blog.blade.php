@@ -2,15 +2,11 @@
 
 @section('styles')
     <!-- CSS -->
-    <link rel="stylesheet"
-          href="./styles/main.css">
     <link rel="stylesheet" href="./styles/blog.css"/>
     <!-- FONTAWESOME -->
-    <link rel="stylesheet"
-          href="./fontawesome-free-5.15.4-web/css/all.css"/>
 @endsection
 
-@section('java')
+@section('javascript')
     <script src="./scripts/main.js"></script>
 @endsection
 
@@ -32,7 +28,7 @@
                             <h3>{{ $article->title }}</h3>
                             <p>{{ $article->paragraph1 }}</p>
                         </div>
-                        <a href="./blogposts/{{ $article->id }}" class="read-more"></a>
+                        <a href="./blog/{{ $article->id }}" class="read-more"></a>
                     </div>
                     <!-- end of one blog -->
                 @endforeach

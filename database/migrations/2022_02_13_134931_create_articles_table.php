@@ -11,10 +11,9 @@ class CreateArticlesTable extends Migration
      *
      * @return void
      */
-    public function up ()
+    public function up()
     {
-        Schema::create('articles', function(Blueprint $table)
-        {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('header1')->nullable();
@@ -31,7 +30,7 @@ class CreateArticlesTable extends Migration
      *
      * @return void
      */
-    public function down ()
+    public function down()
     {
         Schema::dropIfExists('articles');
     }

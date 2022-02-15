@@ -7,11 +7,16 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0"/>
     <title>Index</title>
-
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="/styles/main.css">
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet"
+          href="/fontawesome-free-5.15.4-web/css/all.css"/>
     <!-- INDIVIDUAL CSS -->
 @yield('styles')
-<!-- JAVA -->
-@yield('java')
+<!-- JS -->
+@yield('javascript')
 </head>
 
 <body>
@@ -97,32 +102,32 @@
 {{-- END OF CONTENT --}}
 
 
-    <!-- FOOTER -->
-        <footer class="item footer">
-            <div class="footer-icons">
-                <a href="https://www.facebook.com/daniel.cvetanov.92"
-                   class="footer-single-icon"
-                   target="_">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/cvetanovdaniel/"
-                   target="_"
-                   class="footer-single-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/daniel-georgiev-2171811b5/"
-                   target="_"
-                   class="footer-single-icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/geor0014"
-                   target="_"
-                   class="footer-single-icon">
-                    <i class="fab fa-github-alt"></i>
-                </a>
-            </div>
-        </footer>
-        <!-- END OF FOOTER -->
+<!-- FOOTER -->
+    <footer class="item footer">
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/daniel.cvetanov.92"
+               class="footer-single-icon"
+               target="_">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/cvetanovdaniel/"
+               target="_"
+               class="footer-single-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/daniel-georgiev-2171811b5/"
+               target="_"
+               class="footer-single-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/geor0014"
+               target="_"
+               class="footer-single-icon">
+                <i class="fab fa-github-alt"></i>
+            </a>
+        </div>
+    </footer>
+    <!-- END OF FOOTER -->
 </div>
 
 <!-- INDIVIDUAL SCRIPTS -->

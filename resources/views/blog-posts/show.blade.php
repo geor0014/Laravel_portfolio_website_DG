@@ -3,15 +3,10 @@
 @section('styles')
     <!-- CSS -->
     <link rel="stylesheet" href="/styles/blog-posts-styles/field-of-work.css"/>
-    <link rel="stylesheet" href="/styles/blog-posts-styles/main.css"/>
-
-    <!-- FONTAWESOME -->
-    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css"/>
 @endsection
 
-
-@section('java')
-    <script src="../scripts/main.js"></script>
+@section('javascript')
+    <script src="/scripts/main.js"></script>
 @endsection
 
 @section('content')
