@@ -11,12 +11,11 @@
     <link rel="stylesheet"
           href="/styles/main.css">
     <!-- FONTAWESOME -->
-    <link rel="stylesheet"
-          href="/fontawesome-free-5.15.4-web/css/all.css"/>
-    <!-- INDIVIDUAL CSS -->
+    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css"/>
+    <!-- INDIVIDUAL CSS  -->
 @yield('styles')
 <!-- JS -->
-@yield('javascript')
+    @yield('javascript')
 </head>
 
 <body>
