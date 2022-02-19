@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
@@ -24,7 +25,7 @@ Route::get('/', [WelcomeController::class, 'show']);
 // FAQ Page
 Route::resource('/faq', FaqController::class);
 //Blog Page
-Route::resource('/blog', BlogController::class);
+Route::resource('/blog', ArticleController::class);
 
 
 // Dashboard Page

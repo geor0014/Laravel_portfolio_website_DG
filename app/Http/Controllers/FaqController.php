@@ -21,27 +21,36 @@ class FaqController extends Controller
 
     public function store(Request $request)
     {
-        Faq::create(['question' => $request->question, 'answer' => $request->answer,]);
+        $properties = $request->validate([
+            'question' => ['required'],
+            'answer' => ['required'],
+        ]);
+
+        Faq::create($properties);
 
         return Redirect('faq');
     }
 
-    public function edit($id)
+    public function edit(Faq $faq)
     {
-        $faq = Faq::find($id);
-
         return view('faq-edit', compact('faq'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Faq $faq)
     {
-        Faq::find($id)->update(['question' =>$request->question, 'answer' =>$request->answer]);
+        $properties = $request->validate([
+            'question' => ['required'],
+            'answer' => ['required'],
+        ]);
+
+        $faq->update($properties);
+
         return Redirect('faq');
     }
 
-    public function destroy($id)
+    public function destroy(Faq $faq)
     {
-        Faq::find($id)->delete();
+        $faq->delete();
         return Redirect('faq');
     }
 }

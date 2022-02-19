@@ -28,10 +28,12 @@
                             <h3>{{ $article->title }}</h3>
                             <p>{{ $article->paragraph1 }}</p>
                         </div>
-                        <a href="./blog/{{ $article->id }}" class="read-more"></a>
+                        <a href="{{route('blog.show', $article)}}" class="read-more"></a>
+                        <a href="{{route('blog.edit',$article)}}" style="color: black; padding-top: .5rem;">Edit</a>
                     </div>
                     <!-- end of one blog -->
                 @endforeach
+                <a href="{{ route('blog.create') }}" class="create">Add Blog</a>
             </div>
         </header>
     </section>

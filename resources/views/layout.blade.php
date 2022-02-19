@@ -11,7 +11,7 @@
     <link rel="stylesheet"
           href="/styles/main.css">
     <!-- FONTAWESOME -->
-    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css"/>
+    <script src="https://kit.fontawesome.com/d0ae553ab5.js" crossorigin="anonymous"></script>
     <!-- INDIVIDUAL CSS  -->
 @yield('styles')
 <!-- JS -->

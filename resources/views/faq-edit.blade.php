@@ -15,16 +15,23 @@
             <h2>Edit FAQ</h2>
 
             {{--EDIT FAQ--}}
-            <form action="/faq/{{ $faq->id }}" method="POST">
+            <form action="{{route('faq.update', $faq)}}" method="POST">
                 @csrf
                 @method('PUT')
+
                 <br>
                 <input type="text" name="question" value="{{ $faq->question }}" style="width:100%; padding:.5rem;
                 border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
+                @error('question')
+                <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('question')}}</p>
+                @enderror
 
                 <br>
                 <input type="text" name="answer" value="{{ $faq->answer }}" style="width:100%; padding:.5rem;
                 border:2px solid #4ba0ea; color:white; font-size:25px;background:transparent;"><br><br>
+                @error('answer')
+                <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('answer')}}</p>
+                @enderror
 
                 <input type="submit" value="Save" style="background:transparent; text-decoration: none;
                 background-color:#4ba0ea; padding:.5rem; border-radius:.5rem; border:none;; width:4rem">
@@ -32,7 +39,7 @@
             {{-- END OF EDIT FAQ--}}
 
             {{--DELETE FAQ--}}
-            <form method="POST" action="/faq/{{ $faq->id }}">
+            <form method="POST" action="{{route('faq.destroy', $faq)}}">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure')"

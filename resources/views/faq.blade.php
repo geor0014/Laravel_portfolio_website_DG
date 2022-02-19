@@ -23,11 +23,11 @@
                 <div class="panel">
                     <p>{{$faq->answer}}</p>
                     <button  style="padding:.5rem; background:transparent; border:none; color:#4ba0ea"><a
-                            href="faq/{{$faq->id}}/edit">Edit</a></button>
+                            href="{{route('faq.edit', $faq)}}">Edit</a></button>
                 </div>
                 <!-- end of one question -->
             @endforeach
-            <a href="faq/create" class="create">Add FAQ</a>
+            <a href="{{route('faq.create')}}" class="create">Add FAQ</a>
         </div>
     </section>
     <!-- END OF PARAGRAPH 1 -->

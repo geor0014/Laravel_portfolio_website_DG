@@ -13,15 +13,22 @@
     <section class="item para-1">
         <div id="faq-container">
             <h2>Submit an FAQ</h2>
-            <form action="/faq" method="POST">
+            <form action="{{route('faq.index')}}" method="POST">
                 @csrf
+
                 <br>
                 <input type="text" name="question" placeholder="Question" style="width:14rem; padding:.5rem;
                 border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
+                @error('question')
+                <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('question')}}</p>
+                @enderror
 
                 <br>
                 <input type="text" name="answer" placeholder="Answer" style="width:14rem; padding:.5rem;
                 border:2px solid #4ba0ea; color:white; font-size:25px;background:transparent;"><br><br>
+                @error('answer')
+                <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('answer')}}</p>
+                @enderror
 
                 <input type="submit" value="Submit" style="background:transparent; text-decoration: none;
                 background-color:#4ba0ea; padding:.5rem; border-radius:.5rem; border:none;">
