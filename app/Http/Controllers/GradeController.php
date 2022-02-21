@@ -16,7 +16,7 @@ class GradeController extends Controller
         //
         $grades=Grade::latest()->get();
 
-        return view('grades.index',compact('grades'));
+        return view('grades.index',compact('grades'),);
     }
 
     /**
@@ -35,10 +35,10 @@ class GradeController extends Controller
     public function store(Request $request)
     {
        $properties = $request->validate([
-           'course_name' =>['required'],
-           'test_name' =>['required'],
-           'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
-           'best_grade'=>['required','numeric','min:0','max:10'],
+       'course_name' =>['required'],
+       'test_name' =>['required'],
+       'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
+       'best_grade'=>['required','numeric','min:0','max:10'],
        ]);
 
        Grade::create($properties);
@@ -75,15 +75,15 @@ class GradeController extends Controller
     {
         //
         $properties = $request->validate([
-            'course_name' =>['required'],
-            'test_name' =>['required'],
-            'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
-            'best_grade'=>['required','numeric','min:0','max:10'],
+                'course_name' =>['required'],
+                'test_name' =>['required'],
+                'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
+                'best_grade'=>['required','numeric','min:0','max:10'],
         ]);
 
-        $grade->update($properties);
+            $grade->update($properties);
 
-        return Redirect('grades');
+            return Redirect('grades');
     }
 
 
@@ -94,8 +94,8 @@ class GradeController extends Controller
     public function destroy(Grade $grade)
     {
         //
-        $grade->delete();
+            $grade->delete();
 
-        return Redirect('grades');
+            return Redirect('grades');
     }
 }
