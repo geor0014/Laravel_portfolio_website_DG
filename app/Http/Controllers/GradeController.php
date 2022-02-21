@@ -3,47 +3,52 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
-use App\Http\Requests\StoreGradeRequest;
-use App\Http\Requests\UpdateGradeRequest;
+use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         //
+        $grades=Grade::latest()->get();
+
+        return view('grades.index',compact('grades'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
         //
+        return view('grades.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreGradeRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(StoreGradeRequest $request)
+    public function store(Request $request)
     {
-        //
+       $properties = $request->validate([
+           'course_name' =>['required'],
+           'test_name' =>['required'],
+           'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
+           'best_grade'=>['required','numeric','min:0','max:10'],
+       ]);
+
+       Grade::create($properties);
+
+       return Redirect('grades');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Grade  $grade
-     * @return \Illuminate\Http\Response
+     * @param Grade $grade
+     * @return void
      */
     public function show(Grade $grade)
     {
@@ -51,36 +56,46 @@ class GradeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Grade  $grade
-     * @return \Illuminate\Http\Response
+     * @param Grade $grade
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Grade $grade)
     {
         //
+        return view('grades.edit', compact('grade'));
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateGradeRequest  $request
-     * @param  \App\Models\Grade  $grade
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Grade $grade
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(UpdateGradeRequest $request, Grade $grade)
+    public function update(Request $request, Grade $grade)
     {
         //
+        $properties = $request->validate([
+            'course_name' =>['required'],
+            'test_name' =>['required'],
+            'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
+            'best_grade'=>['required','numeric','min:0','max:10'],
+        ]);
+
+        $grade->update($properties);
+
+        return Redirect('grades');
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Grade  $grade
-     * @return \Illuminate\Http\Response
+     * @param Grade $grade
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Grade $grade)
     {
         //
+        $grade->delete();
+
+        return Redirect('grades');
     }
 }

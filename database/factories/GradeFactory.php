@@ -14,7 +14,10 @@ class GradeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'course_name' => $this->faker->word(),
+            'test_name' => $this->faker->word(),
+            'lowest_passing_grade'=> 5.5,
+            'best_grade' => $this->faker->numberBetween(0,10),
         ];
     }
 }
