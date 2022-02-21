@@ -4,6 +4,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./styles/blog.css"/>
     <!-- FONTAWESOME -->
+
 @endsection
 
 @section('javascript')
@@ -33,7 +34,9 @@
                     </div>
                     <!-- end of one blog -->
                 @endforeach
+                <div class="">
                 <a href="{{ route('blog.create') }}" class="create">Add Blog</a>
+                </div>
             </div>
         </header>
     </section>
