@@ -34,12 +34,12 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-       $properties = $request->validate([
-               'course_name' =>['required'],
-               'test_name' =>['required'],
-               'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
-               'best_grade'=>['required','numeric','min:0','max:10'],
-       ]);
+           $properties = $request->validate([
+                   'course_name' =>['required'],
+                   'test_name' =>['required'],
+                   'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
+                   'best_grade'=>['required','numeric','min:0','max:10'],
+           ]);
 
                Grade::create($properties);
 
