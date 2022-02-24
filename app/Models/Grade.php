@@ -11,9 +11,12 @@ class Grade extends Model
 
     protected $guarded = [];
 
-
-    public function course(){
-       return $this->belongsTo(Course::class);
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function course()
+    {
+         return $this->belongsTo(Course::class);
     }
 
     /**

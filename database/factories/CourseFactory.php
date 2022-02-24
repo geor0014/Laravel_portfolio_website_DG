@@ -17,7 +17,7 @@ class CourseFactory extends Factory
         return [
             'CU_code' =>$this->faker->slug(),
             'name' => $this->faker->word(),
-            'credits' => $this->faker->numberBetween(5,15),
+            'credits' => $this->faker->numberBetween(5, 15),
         ];
     }
 }
