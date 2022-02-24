@@ -25,10 +25,10 @@ class Course extends Model
         $grades = $this->grades->all();
 
         $avg = collect($grades)
-            ->filter (function ($grade){
+            ->filter(function ($grade) {
                 return $grade->best_grade >= 5.5;
             })
-            ->map (function ($grade){
+            ->map(function ($grade) {
                 return $grade->best_grade;
             })
             ->avg();
