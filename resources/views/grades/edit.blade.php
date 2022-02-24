@@ -18,19 +18,19 @@
                 @csrf
                 @method('PUT')
 
-                <div class="">
-                    <input class=""
-                           type="text"
-                           name="course_name"
-                           placeholder="Course Name"
-                           required
-                           value="{{$grade->course_name}}"
-                           style="width:14rem; padding:.5rem;border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
-                    >
-                    @error("course_name")
-                    <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('course_name')}}</p>
-                    @enderror
-                </div>
+{{--                <div class="">--}}
+{{--                    <input class=""--}}
+{{--                           type="text"--}}
+{{--                           name="course_name"--}}
+{{--                           placeholder="Course Name"--}}
+{{--                           required--}}
+{{--                           value="{{$grade->course_name}}"--}}
+{{--                           style="width:14rem; padding:.5rem;border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>--}}
+{{--                    >--}}
+{{--                    @error("course_name")--}}
+{{--                    <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('course_name')}}</p>--}}
+{{--                    @enderror--}}
+{{--                </div>--}}
 
                 <div class="">
                     <input class=""

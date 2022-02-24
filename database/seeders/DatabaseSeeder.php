@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Course;
 use App\Models\Faq;
 use App\Models\Grade;
 use Illuminate\Database\Seeder;
@@ -20,8 +21,9 @@ class DatabaseSeeder extends Seeder
         Grade::truncate();
         Article::truncate();
         Faq::truncate();
+//        Course::truncate();
 
-        Grade::factory(10)->create();
+//        Grade::factory(10)->create();
 
         Faq::create([
             'question' => 'How Can You Print A Document From Your Laptop At HZ?',

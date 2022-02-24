@@ -35,16 +35,19 @@
 
                 <!-- Table Body  -->
                 <tbody>
-                @foreach ($grades as $grade)
+                @foreach ($courses as $course)
+                    @foreach($course->grades as $grade)
                 <!-- one row -->
                 <tr>
-                    <td class="quartile">{{ $grade->course_name }}</td>
+{{--                    <td class="quartile">{{ }}</td>--}}
+                    <td> {{ $course->name }}</td>
                     <td>{{ $grade->test_name }}</td>
                     <td>{{ $grade->lowest_passing_grade }}</td>
                     <td>{{ $grade->best_grade }}</td>
-                    <td><a href="{{route('grades.edit',$grade)}}">Edit</a></td>
+                    <td><a href="{{route('grades.edit',$grade->id)}}">Edit</a></td>
                 </tr>
                 <!-- end of one row -->
+                     @endforeach
                 @endforeach
                 </tbody>
                 <!-- End of Table Body  -->

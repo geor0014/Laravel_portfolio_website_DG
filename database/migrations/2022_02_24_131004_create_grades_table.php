@@ -15,14 +15,11 @@ class CreateGradesTable extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->string('course_name');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->string('test_name');
             $table->decimal('lowest_passing_grade', $precision = 3, $scale = 1)
                   ->comment('Lowest grade to pass so average calculations can be applied')->default(5.5);
             $table->decimal('best_grade', $precision = 3, $scale = 1)->nullable();
-            $table->date('passed_at')
-                  ->nullable()
-                  ->comment('Date that the grade was larger than or equal to the lowest passing grade');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
@@ -13,10 +14,9 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
-        $grades=Grade::latest()->get();
+        $courses = Course::latest()->get();
 
-        return view('grades.index', compact('grades'));
+        return view('grades.index', compact('courses'));
     }
 
     /**
@@ -25,7 +25,9 @@ class GradeController extends Controller
     public function create()
     {
         //
-        return view('grades.create');
+        $courses = Course::latest()->get();
+
+        return view('grades.create', compact('courses'));
     }
 
     /**
@@ -35,9 +37,8 @@ class GradeController extends Controller
     public function store(Request $request)
     {
            $properties = $request->validate([
-                   'course_name' =>['required'],
-                   'test_name' =>['required'],
-                   'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
+                   'course_id' =>['required'],
+                   'test_name'=>['required'],
                    'best_grade'=>['required','numeric','min:0','max:10'],
            ]);
 
@@ -75,7 +76,6 @@ class GradeController extends Controller
     {
         //
         $properties = $request->validate([
-                'course_name' =>['required'],
                 'test_name' =>['required'],
                 'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
                 'best_grade'=>['required','numeric','min:0','max:10'],

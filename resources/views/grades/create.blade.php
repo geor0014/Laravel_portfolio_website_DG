@@ -16,20 +16,23 @@
              <form method="POST" action="{{ route('grades.index') }}">
                  @csrf
 
+                {{--ONE INPUT--}}
                  <div class="">
-                     <input class=""
-                            type="text"
-                            name="course_name"
-                            placeholder="Course Name"
-                            required
-                            value="{{old('course_name')}}"
-                            style="width:14rem; padding:.5rem;border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
-                     >
-                     @error("course_name")
-                     <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('course_name')}}</p>
+                     <select name="course_id"   style="width:10rem; padding:.5rem;border:2px solid #4ba0ea; color:
+                     #4ba0ea; font-size:25px; background:white;">
+                             <option value="">Select Course</option>
+                        @foreach($courses as $course)
+                             <option value="{{$course->id}}">{{$course->name}}</option>
+                        @endforeach
+                     </select>
+                     @error("course_id")
+                     <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('course_id')}}</p>
                      @enderror
                  </div>
+                     <br>
+                {{--END INPUT--}}
 
+                {{--ONE INPUT--}}
                  <div class="">
                      <input class=""
                             type="text"
@@ -43,6 +46,9 @@
                      <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('test_name')}}</p>
                      @enderror
                  </div>
+                {{--END INPUT--}}
+
+                {{--ONE INPUT--}}
                  <div class="">
                      <input class=""
                             name="best_grade"
@@ -55,18 +61,7 @@
                      <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('best_grade')}}</p>
                      @enderror
                  </div>
-                 <div class="">
-                     <input class=""
-                            name="lowest_passing_grade"
-                            placeholder="Lowest Passing Grade"
-                            required
-                            value="{{old('lowest_passing_grade')}}"
-                            style="width:14rem; padding:.5rem;border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
-                     >
-                     @error("lowest_passing_grade")
-                     <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('lowest_passing_grade')}}</p>
-                     @enderror
-                 </div>
+                {{--END INPUT--}}
                  <br>
                  <input type="submit" value="Submit" style="background:transparent; text-decoration: none;
                 background-color:#4ba0ea; padding:.5rem; border-radius:.5rem; border:none;">
