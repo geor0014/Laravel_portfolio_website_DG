@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => 'ZcRRKNgOMLg/7B39YdmAcwtXs24CL7Ppqi5vhpuxn1o=',
+    'key' => 'base64:ZcRRKNgOMLg/7B39YdmAcwtXs24CL7Ppqi5vhpuxn1o=',
 
     'cipher' => 'AES-256-CBC',
 
