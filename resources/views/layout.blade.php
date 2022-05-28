@@ -39,7 +39,7 @@
                         <i class="fas fa-blog"></i>
                         </i><a href="/blog">Blog</a>
                     </li>
-                    <li class="{{ Request::path() === 'dashboard'?'active list-item':'list-item'}}">
+                    <li class="{{ Request::path() === 'grades'?'active list-item':'list-item'}}">
                         <i class="fas fa-columns"></i>
                         <a href="/grades">Dashboard</a>
                     </li>

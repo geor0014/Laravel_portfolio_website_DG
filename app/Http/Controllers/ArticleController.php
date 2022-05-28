@@ -43,11 +43,11 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $properties = $request->validate([
-            'title' =>['required','min:5', 'max:50',],
-            'header1' =>['required',],
-            'header2' =>[],
-            'paragraph1' =>['required','min:10'],
-            'paragraph2' =>['',''],
+            'title' => ['required', 'min:5', 'max:50',],
+            'header1' => ['required',],
+            'header2' => [],
+            'paragraph1' => ['required', 'min:10'],
+            'paragraph2' => ['', ''],
         ]);
         Article::create($properties);
 
@@ -73,11 +73,11 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $properties = $request->validate([
-            'title' =>['required','min:5', 'max:50',],
-            'header1' =>['required',],
-            'header2' =>[],
-            'paragraph1' =>['required','min:10'],
-            'paragraph2' =>['',''],
+            'title' => ['required', 'min:5', 'max:50',],
+            'header1' => ['required',],
+            'header2' => [],
+            'paragraph1' => ['required', 'min:10'],
+            'paragraph2' => ['', ''],
         ]);
 
         Article::find($id)->update($properties);

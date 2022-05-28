@@ -15,15 +15,14 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run ()
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
         Grade::truncate();
         Article::truncate();
         Faq::truncate();
-//        Course::truncate();
+        // Course::truncate();
 
-//        Grade::factory(10)->create();
+        // Grade::factory(10)->create();
 
         Faq::create([
             'question' => 'How Can You Print A Document From Your Laptop At HZ?',
@@ -38,7 +37,8 @@ class DatabaseSeeder extends Seeder
         Faq::create([
             'question' => 'What Do You Need To Do When You Are Sick / Show Symptoms Of Coronavirus?',
             'answer' => 'Contact the teachers/helpdesk at school and stay home. Follow the lessons on stream to compensate for that unusual sickness.
-            ']);
+            '
+        ]);
 
         Faq::create([
             'question' => 'How Can You Book A Project Space In One Of The Wings?',
@@ -66,13 +66,13 @@ class DatabaseSeeder extends Seeder
                         to business decision-makers. So they need to demonstrate a strong sense of the processes taking
                         place beyond the data.',
             'paragraph_image' => '/images/blog-posts-images/data-analyst.png',
-            ]);
+        ]);
         Article::create([
             'title' => 'SKC First Feedback',
             'header2' => 'Positives and Negatives',
             'paragraph1' => 'Positives: All necessary pages are there with content/Nicely styled/Navigation, side menu, SEO, and hosting implemented/Good code editor, website, hosted on URL or IP address/Code and files are well structured.
              Negatives: Mind code duplication/Careful with text over images. Might become difficult to read./ Social media not linked./Put JS in external file./Story did not appear to be well prepared.',
-            ]);
+        ]);
         Article::create([
             'title' => 'My Programming Experience',
             'header2' => 'Not Much To Talk About',
@@ -87,12 +87,12 @@ class DatabaseSeeder extends Seeder
                         here. Another reason were the universities of applied sciences which, I consider of great
                         importance. I researched a lot of universities but in the end what helped me make up my mind and
                         choose HZ, were the friendly people at HZ who made me feel welcomed.',
-            ]);
+        ]);
 
         Article::create([
             'title' => 'SWOT Analysis',
             'header2' => 'Threats',
             'paragraph1' => 'Initially, the fact that I am transferring from another country could be a setback. As far as my weaknesses, I am aware that they may cause me some inconveniences, but I firmly believe that they will not impede me in any way to achieve my goals.',
-            ]);
+        ]);
     }
 }
