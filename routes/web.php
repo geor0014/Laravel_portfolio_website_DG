@@ -1,12 +1,11 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +28,12 @@ Route::resource('/faq', FaqController::class);
 Route::resource('/blog', ArticleController::class);
 // Grades
 Route::resource('/grades', GradeController::class);
-
-// Dashboard Page
-Route::get('/dashboard', [DashboardController::class, 'show']);
 //Profile Page
 Route::get('/profile', [ProfileController::class, 'show']);
+
+// Authentication
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

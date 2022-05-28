@@ -1,10 +1,7 @@
-require('./faq.js');
+require('./bootstrap');
 
-function openSideMenu() {
-    document.getElementById("menu").style.width = "200px";
-    document.getElementsByClassName("sidebar").style.marginLeft = "200px";
-}
-function closeSideMenu() {
-    document.getElementById("menu").style.width = "0";
-    document.getElementsByClassName("sidebar").style.marginLeft = "0";
-}
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
