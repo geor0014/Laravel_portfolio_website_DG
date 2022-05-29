@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FaqController;
@@ -37,3 +38,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+
+// Admin Login
+Route::get('/admin-login', [AdminController::class, 'index'])->name('admin-login-form');
+Route::get('/admin-login/owner', [AdminController::class, 'login'])->name('admin-login');
+Route::get('/admin-dashboard', [DashboardController::class, 'dashboard'])->name('admin-dashboard');
