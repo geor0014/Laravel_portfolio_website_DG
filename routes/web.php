@@ -42,5 +42,5 @@ require __DIR__ . '/auth.php';
 
 // Admin Login
 Route::get('/admin-login', [AdminController::class, 'index'])->name('admin-login-form');
-Route::get('/admin-login/owner', [AdminController::class, 'login'])->name('admin-login');
-Route::get('/admin-dashboard', [DashboardController::class, 'dashboard'])->name('admin-dashboard');
+Route::post('/admin-login', [AdminController::class, 'login'])->name('admin-login');
+Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin-dashboard')->middleware('admin');

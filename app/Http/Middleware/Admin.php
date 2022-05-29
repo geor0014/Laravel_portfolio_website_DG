@@ -19,7 +19,7 @@ class Admin
     {
 
         if (!Auth::guard('admin')->check()) {
-            return redirect('/admin-login')->with('error', 'You must be logged in to access this page.');
+            return redirect('/admin-login')->with('error', 'You must be logged in as admin to access this page.');
         }
         return $next($request);
     }

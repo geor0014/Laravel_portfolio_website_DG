@@ -38,6 +38,16 @@
               w-50
               max-w-md
             ">
+                @if (session('error'))
+                {{-- Session Flash Message --}}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 p-3 m-2 rounded relative" role="alert">
+                    <strong class="font-bold">Holy smokes!</strong>
+                    <span class="block sm:inline">{{ Session::get('error') }}</span>
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    </span>
+                </div>
+                {{-- END Session Flash Message --}}
+                @endif
                 <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
                     Admin Login
                 </div>
@@ -46,7 +56,8 @@
                 </div>
 
                 <div class="mt-10">
-                    <form action="#">
+                    <form action="{{ route('admin-login') }}" method="POST">
+                        @csrf
                         <div class="flex flex-col mb-5">
                             <label for="email" class="mb-1 text-xs tracking-wide text-gray-600">E-Mail Address:</label>
                             <div class="relative">
@@ -64,7 +75,7 @@
                                     <i class="fas fa-at text-blue-500"></i>
                                 </div>
 
-                                <input id="email" type="email" name="email" class="
+                                <input type="email" name="email" class="
                         text-sm
                         placeholder-gray-500
                         pl-10
@@ -97,7 +108,7 @@
                                     </span>
                                 </div>
 
-                                <input id="password" type="password" name="password" class="
+                                <input type="password" name="password" class="
                         text-sm
                         placeholder-gray-500
                         pl-10
