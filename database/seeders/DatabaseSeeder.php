@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Http\Middleware\Admin;
 use App\Models\Article;
 use App\Models\Course;
 use App\Models\Faq;
 use App\Models\Grade;
+use Database\Factories\AdminFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +25,8 @@ class DatabaseSeeder extends Seeder
         // Course::truncate();
 
         // Grade::factory(10)->create();
+
+        // $this->call(AdminSeeder::class);
 
         Faq::create([
             'question' => 'How Can You Print A Document From Your Laptop At HZ?',

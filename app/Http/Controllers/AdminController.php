@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class AdminController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect('/')->with('success', 'You are now logged in as admin.');
+            return redirect('/admin-dashboard')->with('success', 'You are now logged in as admin.');
         } else {
             return redirect()->back()->with('error', 'Invalid email or password.');
         }
