@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Grade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GradeController extends Controller
 {
@@ -25,9 +26,14 @@ class GradeController extends Controller
     public function create()
     {
         //
-        $courses = Course::latest()->get();
+        if (Auth::check()) {
 
-        return view('grades.create', compact('courses'));
+            $courses = Course::latest()->get();
+
+            return view('grades.create', compact('courses'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -36,15 +42,20 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-           $properties = $request->validate([
-                   'course_id' =>['required'],
-                   'test_name'=>['required'],
-                   'best_grade'=>['required','numeric','min:0','max:10'],
-           ]);
+        if (Auth::check()) {
 
-               Grade::create($properties);
+            $properties = $request->validate([
+                'course_id' => ['required'],
+                'test_name' => ['required'],
+                'best_grade' => ['required', 'numeric', 'min:0', 'max:10'],
+            ]);
 
-               return Redirect('grades');
+            Grade::create($properties);
+
+            return Redirect('grades');
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -63,7 +74,12 @@ class GradeController extends Controller
     public function edit(Grade $grade)
     {
         //
-        return view('grades.edit', compact('grade'));
+        if (Auth::check()) {
+
+            return view('grades.edit', compact('grade'));
+        } else {
+            return redirect('/login');
+        }
     }
 
 
@@ -75,15 +91,20 @@ class GradeController extends Controller
     public function update(Request $request, Grade $grade)
     {
         //
-        $properties = $request->validate([
-                'test_name' =>['required'],
-                'lowest_passing_grade'=>['required','numeric','min:0','max:10'],
-                'best_grade'=>['required','numeric','min:0','max:10'],
-        ]);
+        if (Auth::check()) {
+
+            $properties = $request->validate([
+                'test_name' => ['required'],
+                'lowest_passing_grade' => ['required', 'numeric', 'min:0', 'max:10'],
+                'best_grade' => ['required', 'numeric', 'min:0', 'max:10'],
+            ]);
 
             $grade->update($properties);
 
             return Redirect('grades');
+        } else {
+            return redirect('/login');
+        }
     }
 
 
@@ -94,8 +115,13 @@ class GradeController extends Controller
     public function destroy(Grade $grade)
     {
         //
+        if (Auth::check()) {
+
             $grade->delete();
 
             return Redirect('grades');
+        } else {
+            return redirect('/login');
+        }
     }
 }

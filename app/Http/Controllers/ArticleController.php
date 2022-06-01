@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -33,7 +34,12 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('blog-create');
+        if (Auth::check()) {
+
+            return view('blog-create');
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -42,16 +48,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $properties = $request->validate([
-            'title' => ['required', 'min:5', 'max:50',],
-            'header1' => ['required',],
-            'header2' => [],
-            'paragraph1' => ['required', 'min:10'],
-            'paragraph2' => ['', ''],
-        ]);
-        Article::create($properties);
+        if (Auth::check()) {
 
-        return Redirect('blog');
+            $properties = $request->validate([
+                'title' => ['required', 'min:5', 'max:50',],
+                'header1' => ['required',],
+                'header2' => [],
+                'paragraph1' => ['required', 'min:10'],
+                'paragraph2' => ['', ''],
+            ]);
+            Article::create($properties);
+
+            return Redirect('blog');
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -60,9 +71,14 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $article = Article::find($id);
+        if (Auth::check()) {
 
-        return view('blog-edit', compact('article'));
+            $article = Article::find($id);
+
+            return view('blog-edit', compact('article'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -72,17 +88,22 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $properties = $request->validate([
-            'title' => ['required', 'min:5', 'max:50',],
-            'header1' => ['required',],
-            'header2' => [],
-            'paragraph1' => ['required', 'min:10'],
-            'paragraph2' => ['', ''],
-        ]);
+        if (Auth::check()) {
 
-        Article::find($id)->update($properties);
+            $properties = $request->validate([
+                'title' => ['required', 'min:5', 'max:50',],
+                'header1' => ['required',],
+                'header2' => [],
+                'paragraph1' => ['required', 'min:10'],
+                'paragraph2' => ['', ''],
+            ]);
 
-        return Redirect('blog');
+            Article::find($id)->update($properties);
+
+            return Redirect('blog');
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -91,7 +112,12 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        Article::find($id)->delete();
-        return Redirect('blog');
+        if (Auth::check()) {
+
+            Article::find($id)->delete();
+            return Redirect('blog');
+        } else {
+            return redirect('/login');
+        }
     }
 }

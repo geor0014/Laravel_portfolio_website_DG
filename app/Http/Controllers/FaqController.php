@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -16,41 +17,64 @@ class FaqController extends Controller
 
     public function create()
     {
-        return view('faq-create');
+        if (Auth::check()) {
+            return view('faq-create');
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function store(Request $request)
     {
-        $properties = $request->validate([
-            'question' => ['required'],
-            'answer' => ['required'],
-        ]);
+        if (Auth::check()) {
 
-        Faq::create($properties);
+            $properties = $request->validate([
+                'question' => ['required'],
+                'answer' => ['required'],
+            ]);
 
-        return Redirect('faq');
+            Faq::create($properties);
+
+            return Redirect('faq');
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function edit(Faq $faq)
     {
-        return view('faq-edit', compact('faq'));
+        if (Auth::check()) {
+            return view('faq-edit', compact('faq'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function update(Request $request, Faq $faq)
     {
-        $properties = $request->validate([
-            'question' => ['required'],
-            'answer' => ['required'],
-        ]);
+        if (Auth::check()) {
 
-        $faq->update($properties);
+            $properties = $request->validate([
+                'question' => ['required'],
+                'answer' => ['required'],
+            ]);
 
-        return Redirect('faq');
+            $faq->update($properties);
+
+            return Redirect('faq');
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function destroy(Faq $faq)
     {
-        $faq->delete();
-        return Redirect('faq');
+        if (Auth::check()) {
+
+            $faq->delete();
+            return Redirect('faq');
+        } else {
+            return redirect('/login');
+        }
     }
 }
