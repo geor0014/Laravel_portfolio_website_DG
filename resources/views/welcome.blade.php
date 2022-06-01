@@ -14,8 +14,7 @@
 <section class="item para-1">
     <header id="banner">
         <div class="banner-title">
-            <h1 class="banner-text">Daniel
-                Georgiev</h1>
+            <h1 class="banner-text">Sherlock Holmes</h1>
             <div class="banner-underline"></div>
             <div class="banner-btn">
                 <button type="button"><a href="./profile">More
