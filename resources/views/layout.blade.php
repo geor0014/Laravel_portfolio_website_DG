@@ -51,11 +51,19 @@
                         <i class="fas fa-id-badge"></i>
                         <a href="/profile">Profile</a>
                     </li>
-                    <li>
-                        <a href="https://hz.nl/en " target="_">
-                            <img src="/images/HZ.jpg" class="hz-logo" alt="HZ-uni-logo" />
+                    @guest
+                    <li class="list-item">
+                        <a href="/login">Log In</a>
                     </li>
-                    </a>
+                    @endguest
+                    @auth
+                    <li class="list-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="nav-btn" type="submit"> Log Out</button>
+                        </form>
+                    </li>
+                    @endauth
                 </ul>
             </nav>
             <!-- end of nav -->
