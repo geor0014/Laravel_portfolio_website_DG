@@ -31,10 +31,10 @@ class FaqController extends Controller
             $properties = $request->validate([
                 'question' => ['required'],
                 'answer' => ['required'],
+                'user_id' => ['required'],
             ]);
 
-            Faq::create($properties);
-
+            Faq::create($properties,);
             return Redirect('faq');
         } else {
             return redirect('/login');

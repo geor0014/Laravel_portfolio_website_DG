@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 
         //
         Gate::define('delete_faq', function ($user, $faq) {
-            return $user->id === 2;
+            return $user->id == $faq->user_id;
         });
     }
 }

@@ -12,6 +12,7 @@ class Faq extends Model
         'question',
         'answer',
         'link',
+        'user_id',
     ];
 
     public function user()
