@@ -13,4 +13,9 @@ class Faq extends Model
         'answer',
         'link',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

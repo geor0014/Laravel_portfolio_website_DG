@@ -18,6 +18,7 @@ class CreateFaqsTable extends Migration
             $table->string('question');
             $table->string('answer');
             $table->string('link')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
