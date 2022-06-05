@@ -73,15 +73,15 @@
                     </li>
                     @endauth
 
-                    {{--
+
                     @auth('admin')
                     <li class="list-item">
-                        <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('admin-logout') }}" method="POST">
                             @csrf
                             <button class="nav-btn" type="submit"> Log Out</button>
                         </form>
                     </li>
-                    @endauth --}}
+                    @endauth
 
                 </ul>
             </nav>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 
 class AdminController extends Controller
 {
@@ -25,6 +26,12 @@ class AdminController extends Controller
         } else {
             return redirect()->back()->with('error', 'Invalid email or password.');
         }
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/');
     }
 
     public function dashboard()
