@@ -51,11 +51,19 @@
                         <i class="fas fa-id-badge"></i>
                         <a href="/profile">Profile</a>
                     </li>
+
                     @guest
                     <li class="list-item">
                         <a href="/login">Log In</a>
                     </li>
                     @endguest
+
+                    @guest
+                    <li class="list-item">
+                        <a href="/admin-login">Admin</a>
+                    </li>
+                    @endguest
+
                     @auth
                     <li class="list-item">
                         <form action="{{ route('logout') }}" method="POST">
@@ -64,6 +72,17 @@
                         </form>
                     </li>
                     @endauth
+
+                    {{--
+                    @auth('admin')
+                    <li class="list-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="nav-btn" type="submit"> Log Out</button>
+                        </form>
+                    </li>
+                    @endauth --}}
+
                 </ul>
             </nav>
             <!-- end of nav -->
