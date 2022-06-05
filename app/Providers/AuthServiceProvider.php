@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\FaqPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Faq' => 'App\Policies\FaqPolicy',
     ];
 
     /**
@@ -26,13 +28,16 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
-        Gate::define('delete_faq', function ($user, $faq) {
-            return $user->id == $faq->user_id;
-        });
+        // Gate::define('delete_faq', function ($user, $faq) {
+        //     return $user->id == $faq->user_id;
+        // });
 
-        Gate::define('update_faq', function ($user, $faq) {
-            return $user->id == $faq->user_id;
-        });
+        // Gate::define('faqs.update', FaqPolicy::class . '@update');
+        // Gate::define('faqs.delete', FaqPolicy::class . '@delete');
+
+        // Gate::define('update_faq', function ($user, $faq) {
+        //     return $user->id == $faq->user_id;
+        // });
 
         Gate::before(function ($user, $ability) {
             if ($user->is_admin) {

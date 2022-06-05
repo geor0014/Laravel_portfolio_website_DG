@@ -45,7 +45,7 @@ class FaqController extends Controller
     public function edit(Faq $faq)
     {
         // check if user is authorized to edit this faq using Gate
-        $this->authorize('update_faq', $faq);
+        $this->authorize('update', $faq);
 
         if (Auth::check()) {
             return view('faq-edit', compact('faq'));
@@ -57,7 +57,7 @@ class FaqController extends Controller
     public function update(Request $request, Faq $faq)
     {
         // check if user is authorized to update faq using Gate
-        $this->authorize('update_faq', $faq);
+        $this->authorize('update', $faq);
 
         if (Auth::check()) {
             $properties = $request->validate([
@@ -76,7 +76,7 @@ class FaqController extends Controller
     public function destroy(Faq $faq)
     {
         // Check if user is authorized to delete the faq using Gate
-        $this->authorize('delete_faq', $faq);
+        $this->authorize('delete', $faq);
 
         if (Auth::check()) {
             $faq->delete();
