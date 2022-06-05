@@ -44,9 +44,8 @@ class FaqController extends Controller
 
     public function edit(Faq $faq)
     {
-        if (Gate::denies('delete_faq', $faq)) {
-            abort(403, 'Sorry, you are not allowed to do that.');
-        }
+        // check if user is authorized to edit this faq using Gate
+        $this->authorize('update_faq', $faq);
 
         if (Auth::check()) {
             return view('faq-edit', compact('faq'));
@@ -57,8 +56,10 @@ class FaqController extends Controller
 
     public function update(Request $request, Faq $faq)
     {
-        if (Auth::check()) {
+        // check if user is authorized to update faq using Gate
+        $this->authorize('update_faq', $faq);
 
+        if (Auth::check()) {
             $properties = $request->validate([
                 'question' => ['required'],
                 'answer' => ['required'],
@@ -74,8 +75,10 @@ class FaqController extends Controller
 
     public function destroy(Faq $faq)
     {
-        if (Auth::check()) {
+        // Check if user is authorized to delete the faq using Gate
+        $this->authorize('delete_faq', $faq);
 
+        if (Auth::check()) {
             $faq->delete();
             return Redirect('faq');
         } else {

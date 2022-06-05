@@ -20,7 +20,7 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('/admin-dashboard')->with('success', 'You are now logged in as admin.');
         } else {
             return redirect()->back()->with('error', 'Invalid email or password.');
