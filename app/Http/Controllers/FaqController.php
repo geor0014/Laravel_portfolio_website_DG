@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faq;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FaqController extends Controller
 {
@@ -43,6 +44,10 @@ class FaqController extends Controller
 
     public function edit(Faq $faq)
     {
+        if (Gate::denies('delete_faq', $faq)) {
+            abort(403, 'Sorry, you are not allowed to do that.');
+        }
+
         if (Auth::check()) {
             return view('faq-edit', compact('faq'));
         } else {
