@@ -122,6 +122,10 @@
                             </div>
                         </div>
 
+                        <div class="border-b-2 border-blue-800 inline-block mb-3">
+                            <h3 class=" font-bold text-blue-800"><a href="{{ route('admin-register') }}">Register</a>
+                            </h3>
+                        </div>
                         <div class="flex w-full">
                             <button type="submit" class="
                       flex
