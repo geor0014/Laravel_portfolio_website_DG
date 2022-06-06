@@ -64,6 +64,6 @@ class AdminController extends Controller
             'remember_token' => SupportStr::random(60),
         ]);
 
-        return redirect('/')->with('success', 'Admin account created successfully.');
+        return redirect('/admin-login')->with('success', 'Admin account created successfully.');
     }
 }
