@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GradeController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,8 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 // Admin Page
-Route::get('/admin', function () {
-    return view('admin.index');
-})->middleware(['auth', 'role:admin'])->name('admin.index');
+Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/permissions', PermissionController::class);
+});

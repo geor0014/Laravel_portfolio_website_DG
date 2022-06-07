@@ -28,26 +28,12 @@
         <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
             <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
                 <div class="text-sm">
-                    <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Teams in space</div>
+                    <div class="bg-gray-900 text-white p-5 rounded cursor-pointer"><a
+                            href="{{ route('admin.roles.index') }}">Roles </a> </div>
                     <div
                         class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
-                        Backlog</div>
-                    <div class="bg-gray-700 text-blue-300 p-2 rounded mt-2 cursor-pointer">Board</div>
-                    <div
-                        class="bg-gray-900 flex justify-between items-center text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
-                        <span>Reports</span>
-                        <span
-                            class="w-4 h-4 bg-blue-600 rounded-full text-white text-center font-normal text-xs">5</span>
+                        <a href="{{ route('admin.permissions.index') }}">Permissions</a>
                     </div>
-                    <div
-                        class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
-                        Releases</div>
-                    <div
-                        class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
-                        Components</div>
-                    <div
-                        class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
-                        Repository</div>
                 </div>
 
                 <div class="flex p-3 text-white bg-red-500 rounded cursor-pointer text-center text-sm">
