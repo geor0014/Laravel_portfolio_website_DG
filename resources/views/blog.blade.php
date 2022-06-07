@@ -30,17 +30,21 @@
                     <p>{{ $article->paragraph1 }}</p>
                 </div>
                 <a href="{{route('blog.show', $article)}}" class="read-more"></a>
-                @auth
+                @role('admin')
                 <a href="{{route('blog.edit',$article)}}" style="color: black; padding-top: .5rem;">Edit</a>
-                @endauth
+                @endrole
             </div>
             <!-- end of one blog -->
             @endforeach
-            @auth
+
+            {{-- ADMIN ONLY --}}
+            @role('admin')
             <div class="">
                 <a href="{{ route('blog.create') }}" class="create">Add Blog</a>
             </div>
-            @endauth
+            @endrole
+            {{-- END ADMIN ONLY --}}
+
         </div>
     </header>
 </section>

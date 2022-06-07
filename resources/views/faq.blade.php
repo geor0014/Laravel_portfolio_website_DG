@@ -31,9 +31,9 @@
         </div>
         <!-- end of one question -->
         @endforeach
-        @auth
+        @role('writer')
         <a href="{{route('faq.create')}}" class="create">Add FAQ</a>
-        @endauth
+        @endrole
     </div>
 </section>
 <!-- END OF PARAGRAPH 1 -->
