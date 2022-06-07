@@ -58,6 +58,12 @@
                     </li>
                     @endguest
 
+                    @role('admin')
+                    <li class="list-item">
+                        <a href="/admin">Admin Page</a>
+                    </li>
+                    @endrole
+
                     @auth
                     <li class="list-item">
                         <form action="{{ route('logout') }}" method="POST">
