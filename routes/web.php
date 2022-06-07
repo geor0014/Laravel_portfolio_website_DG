@@ -38,14 +38,3 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
-
-
-// Admin Login
-Route::get('/admin-login', [AdminController::class, 'index'])->name('admin-login-form');
-Route::post('/admin-login', [AdminController::class, 'login'])->name('admin-login');
-Route::post('/admin-logout', [AdminController::class, 'logout'])->name('admin-logout');
-
-Route::get('/admin-register', [AdminController::class, 'register_form'])->name('admin-register');
-Route::post('/admin-register', [AdminController::class, 'register'])->name('admin-register');
-
-Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin-dashboard')->middleware('admin');
