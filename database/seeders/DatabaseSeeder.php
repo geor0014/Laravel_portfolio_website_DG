@@ -29,6 +29,6 @@ class DatabaseSeeder extends Seeder
 
 
         // Grade::factory(10)->create();
-        $this->call([ArticleSeeder::class, FaqSeeder::class]);
+        $this->call([ArticleSeeder::class, FaqSeeder::class, RoleSeeder::class, AdminSeeder::class]);
     }
 }
