@@ -69,6 +69,24 @@
         {{-- MAIN --}}
         <section class="w-full p-4">
             <div class="flex flex-col mt-8">
+
+                {{-- FLASH MESSAGE --}}
+                @if (session('success'))
+                <div class="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700" role="alert">
+                    <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <span class="font-medium">Success alert!</span> <span class="font-bold"> {{ session('success')
+                            }}</span>
+                    </div>
+                </div>
+                @endif
+                {{-- END FLASH MESSAGE --}}
+
                 <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                     <div
                         class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
@@ -102,8 +120,17 @@
                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                         <div class="flex items-center">
                             <div class="ml-4">
-                                <a href=""><button
-                                        class="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 text-lg rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300">Delete</button></a>
+                                <a href="{{ route('admin.roles.edit', $role->id) }}">
+                                    <button type="submit"
+                                        class="p-2 mb-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 text-lg rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300">Edit</button>
+                                </a>
+                                <form action="{{ route('admin.roles.destroy', $role->id) }}" method='POST'
+                                    onsubmit="return confirm('Are you sure?')">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="submit"
+                                        class="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 text-lg rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300">Delete</button>
+                                </form>
                             </div>
                         </div>
                 </div>

@@ -68,25 +68,84 @@
 
         {{-- MAIN --}}
         <section class="w-full">
+            {{-- FLASH MESSAGE --}}
+            @if (session('success'))
+            <div class="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700" role="alert">
+                <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <div>
+                    <span class="font-medium">Success alert!</span> <span class="font-bold"> {{ session('success')
+                        }}</span>
+                </div>
+            </div>
+            @endif
+            {{-- END FLASH MESSAGE --}}
+
             {{-- FORM --}}
             <div class=" min-h-screen bg-slate-200 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
                 <span
-                    class="border text-4xl text-yellow-800 px-6 pt-10 pb-8 bg-white w-1/2 max-w-md mx-auto rounded-t-md sm:px-10">New
+                    class="border text-4xl text-yellow-800 px-6 pt-10 pb-8 bg-white w-1/2 max-w-md mx-auto rounded-t-md sm:px-10">Update
                     Role</span>
                 <div
                     class="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md">
-                    <form method="POST" action="{{ route('admin.roles.store') }}">
+                    <form action="{{ route('admin.roles.update', $role) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <label for="name" class="block">Role name</label>
-                        <input type="text" name="name" class="border w-full h-10 px-3 mb-5 rounded-md">
+                        <input value="{{ $role->name }}" type="text" name="name"
+                            class="border w-full h-10 px-3 mb-5 rounded-md">
 
                         <div class="">
 
                             @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <button
-                            class="mt-5 bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded">Create</button>
+                            class="mt-5 bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded">Update</button>
                     </form>
+
+                    {{-- PERMISSIONS --}}
+                    <div class="m-2 p-2 ">
+                        <h2 class="font-semibold text-2xl">Assigned Permissions</h2>
+                        <div class="p-4 flex flex-col">
+                            @if($role->permissions)
+                            @foreach($role->permissions as $permission)
+                            {{-- REMOVE PERMISSION --}}
+                            <form action="{{ route('admin.roles.permissions.revoke',[$role->id,$permission->id]) }}"
+                                class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white w-1/3 m-1 rounded-md"
+                                method="POST" onsubmit=" return confirm('Are you sure?')">
+                                @csrf
+                                @method("DELETE")
+                                <button class="w-full" type="submit">{{ $permission->name }}</button>
+                            </form>
+                            {{-- END REMOVE PERMISSION --}}
+                            @endforeach
+                            @endif
+                        </div>
+                        <div class="p-2">
+                            <form action="{{ route('admin.roles.permissions', $role) }}" method="POST">
+                                @csrf
+                                {{-- DROPDOWN --}}
+                                <div class="relative inline-flex">
+                                    <select name="permission"
+                                        class="border border-gray-300  text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                                        <option>Choose a Permission</option>
+                                        @foreach($permissions as $permission)
+                                        <option value="{{ $permission->name }}">{{ $permission->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- END DROPDOWN --}}
+                                @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
+                                <button type="submit"
+                                    class="mt-5 bg-blue-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded">Assign</button>
+                            </form>
+                        </div>
+                    </div>
+                    {{-- END PERMISSIONS --}}
                 </div>
             </div>
             {{-- END FORM --}}

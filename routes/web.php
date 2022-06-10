@@ -44,5 +44,7 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/roles', RoleController::class);
+    Route::post('/roles/{role}/permissions', [RoleController::class, 'attachPermissions'])->name('roles.permissions');
+    Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'detachPermissions'])->name('roles.permissions.revoke');
     Route::resource('/permissions', PermissionController::class);
 });

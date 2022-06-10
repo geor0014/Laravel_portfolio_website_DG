@@ -31,4 +31,26 @@ class PermissionController extends Controller
 
         return redirect()->route('admin.permissions.index')->with('success', 'Permission created successfully.');
     }
+
+    public function destroy(Permission $permission)
+    {
+        $permission->delete();
+        return redirect()->route('admin.permissions.index')->with('success', 'Permission deleted successfully.');
+    }
+
+    public function edit(Permission $permission)
+    {
+        return view('admin.permissions.edit', compact('permission'));
+    }
+
+    public function update(Request $request, Permission $permission)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required|unique:permissions,name,' . $permission->id,
+        ]);
+
+        $permission->update($data);
+
+        return redirect()->route('admin.permissions.index')->with('success', 'Permission updated successfully.');
+    }
 }
