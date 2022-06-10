@@ -39,7 +39,7 @@
         {{-- END OF EDIT FAQ--}}
 
         {{--DELETE FAQ--}}
-        @can('delete', $faq)
+        @role('admin')
         <form method="POST" action="{{route('faq.destroy', $faq)}}">
             @csrf
             @method('DELETE')
@@ -47,7 +47,7 @@
                 background-color:#4ba0ea; padding:.5rem; border-radius:.5rem; border:none; margin-top:.5rem;
                 width:4rem">
         </form>
-        @endcan
+        @endrole
         {{--END OF DELETE FAQ--}}
     </div>
 </section>

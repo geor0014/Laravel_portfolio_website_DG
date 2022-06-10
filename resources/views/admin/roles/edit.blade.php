@@ -32,7 +32,11 @@
         <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
             <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
                 <div class="text-sm">
-                    <div class="bg-gray-900 text-white p-5 rounded cursor-pointer"><a
+                    <div
+                        class="bg-gray-900 text-white p-2 rounded mt-2 mb-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
+                        <a href="{{ route('admin.users.index') }}">Users</a>
+                    </div>
+                    <div class="bg-gray-900 text-white p-2 rounded cursor-pointer"><a
                             href="{{ route('admin.roles.index') }}">Roles </a> </div>
                     <div
                         class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
@@ -115,8 +119,8 @@
                             @foreach($role->permissions as $permission)
                             {{-- REMOVE PERMISSION --}}
                             <form action="{{ route('admin.roles.permissions.revoke',[$role->id,$permission->id]) }}"
-                                class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white w-1/3 m-1 rounded-md"
-                                method="POST" onsubmit=" return confirm('Are you sure?')">
+                                class="p-4 bg-red-500 hover:bg-red-700 text-white w-2/4 m-1 rounded-md" method="POST"
+                                onsubmit=" return confirm('Are you sure?')">
                                 @csrf
                                 @method("DELETE")
                                 <button class="w-full" type="submit">{{ $permission->name }}</button>

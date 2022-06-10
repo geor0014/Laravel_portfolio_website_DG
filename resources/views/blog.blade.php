@@ -38,7 +38,7 @@
             @endforeach
 
             {{-- ADMIN ONLY --}}
-            @role('admin')
+            @role('writer')
             <div class="">
                 <a href="{{ route('blog.create') }}" class="create">Add Blog</a>
             </div>

@@ -32,7 +32,11 @@
         <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
             <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
                 <div class="text-sm">
-                    <div class="bg-gray-900 text-white p-5 rounded cursor-pointer"><a
+                    <div
+                        class="bg-gray-900 text-white p-2 rounded mt-2 mb-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
+                        <a href="{{ route('admin.users.index') }}">Users</a>
+                    </div>
+                    <div class="bg-gray-900 text-white p-2 rounded cursor-pointer"><a
                             href="{{ route('admin.roles.index') }}">Roles </a> </div>
                     <div
                         class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300">
@@ -111,9 +115,10 @@
                                 @foreach ($users as $user)
                                 {{-- ONE ROW --}}
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
                                         <div class="flex items-center">
-                                            <div class="ml-4">
+                                            <div class="ml-4 ">
                                                 <div class="leading-5 font-bold text-lg text-gray-900">{{
                                                     $user->name
                                                     }}</div>
@@ -134,13 +139,14 @@
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     <div class="flex items-center">
                         <div class="ml-4">
-                            <a href="">
+                            <a class="" href="{{ route('admin.users.show',$user->id) }}">
                                 <button type="submit"
                                     class="p-2 mb-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 text-lg rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300">Roles</button>
                             </a>
                             <a href="">
-                                <button type="submit"
+                                {{-- <button type="submit"
                                     class="p-2 mb-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:blue-green-300">Permissions</button>
+                                --}}
                             </a>
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method='POST'
                                 onsubmit="return confirm('Are you sure?')">

@@ -18,9 +18,9 @@
             <div class="text-white text-xs hidden sm:block ml-2">
                 <a href="{{ route('admin.index') }}"
                     class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer">Dashboard</a>
-                {{-- <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Projects</a>
-                <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Issues</a>
-                <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Boards</a> --}}
+
+                <a href="/" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer">Main</a>
+
             </div>
         </nav>
     </header>
