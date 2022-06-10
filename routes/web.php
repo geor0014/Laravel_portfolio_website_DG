@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FaqController;
@@ -47,4 +48,6 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::post('/roles/{role}/permissions', [RoleController::class, 'attachPermissions'])->name('roles.permissions');
     Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'detachPermissions'])->name('roles.permissions.revoke');
     Route::resource('/permissions', PermissionController::class);
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 });

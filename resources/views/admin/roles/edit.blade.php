@@ -108,7 +108,7 @@
                     </form>
 
                     {{-- PERMISSIONS --}}
-                    <div class="m-2 p-2 ">
+                    <div class="m-4 p-3  bg-gray-200">
                         <h2 class="font-semibold text-2xl">Assigned Permissions</h2>
                         <div class="p-4 flex flex-col">
                             @if($role->permissions)
