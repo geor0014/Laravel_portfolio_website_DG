@@ -40,10 +40,10 @@
                     </div>
 
                     <div class=" text-white p-2 rounded mt-2 cursor-pointer">
-                        <a href="{{ route('admin.roles.create') }}">
+                        <a href="{{ route('admin.roles.index') }}">
                             <button
-                                class="p-2 pl-5 pr-5 bg-green-500 text-gray-100 text-lg rounded-lg focus:border-4 border-green-300">New
-                                Role</button>
+                                class="p-2 pl-5 pr-5 bg-green-200 text-gray-100 text-lg rounded-lg focus:border-4 border-green-500">Role
+                                Index</button>
                         </a>
                     </div>
                 </div>
@@ -67,54 +67,29 @@
         {{-- END SIDEBAR --}}
 
         {{-- MAIN --}}
-        <section class="w-full p-4">
-            <div class="flex flex-col mt-8">
-                <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                    <div
-                        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-                        {{-- TABLE --}}
-                        <table class="min-w-full">
-                            {{-- HEAD --}}
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-xl text-gray-500 uppercase tracking-wider">
-                                        ROLE</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                                </tr>
-                            </thead>
-                            {{-- END HEAD --}}
+        <section class="w-full">
+            {{-- FORM --}}
+            <div class=" min-h-screen bg-slate-200 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
+                <span
+                    class="border text-4xl text-yellow-800 px-6 pt-10 pb-8 bg-white w-1/2 max-w-md mx-auto rounded-t-md sm:px-10">New
+                    Role</span>
+                <div
+                    class="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md">
+                    <form method="POST" action="{{ route('admin.roles.store') }}">
+                        @csrf
+                        <label for="name" class="block">Role name</label>
+                        <input type="text" name="name" class="border w-full h-10 px-3 mb-5 rounded-md">
 
-                            <tbody class="bg-white">
-                                @foreach ($roles as $role)
-                                {{-- ONE ROW --}}
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="flex items-center">
-                                            <div class="ml-4">
-                                                <div class="leading-5 font-bold text-lg text-gray-900">{{
-                                                    $role->name
-                                                    }}</div>
-                                            </div>
-                                        </div>
-                    </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                        <div class="flex items-center">
-                            <div class="ml-4">
-                                <a href=""><button
-                                        class="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 text-lg rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300">Delete</button></a>
-                            </div>
+                        <div class="">
+
+                            @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
+                        <button
+                            class="mt-5 bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded">Create</button>
+                    </form>
                 </div>
-                </td>
-                </tr>
-                {{-- END ONE ROW --}}
-                @endforeach
-                </tbody>
-                </table>
-                {{-- END TABLE --}}
             </div>
+            {{-- END FORM --}}
         </section>
         {{-- END MAIN --}}
     </main>

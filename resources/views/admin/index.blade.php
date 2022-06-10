@@ -10,21 +10,25 @@
 </head>
 
 <body>
+    {{-- NAV --}}
     <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
         <nav class="flex items-center">
             <img class="w-7 h-7"
                 src="https://www.solarwinds.com/-/media/solarwinds/swdcv2/licensed-products/service-desk/integrations/sd-integrations-logo-jira.ashx?rev=701fbaa7f8ac4ae08e0406c8984c43e7&hash=75D4F04DE99B88DE7B2C4193F0616F1F" />
             <div class="text-white text-xs hidden sm:block ml-2">
-                <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer">Dashboard</a>
-                <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Projects</a>
+                <a href="{{ route('admin.index') }}"
+                    class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer">Dashboard</a>
+                {{-- <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Projects</a>
                 <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Issues</a>
-                <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Boards</a>
+                <a href="#" class="bg-gray-900 hover:bg-gray-700 p-2 rounded cursor-pointer ml-1">Boards</a> --}}
             </div>
         </nav>
     </header>
+    {{-- END NAV --}}
 
 
     <main class="flex w-full h-screen">
+        {{-- SIDEBARD --}}
         <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
             <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
                 <div class="text-sm">
@@ -52,11 +56,13 @@
                 </div>
             </div>
         </aside>
+        {{-- END SIDEBARD --}}
 
+        {{-- MAIN --}}
         <section class="w-full p-4">
             <div class="w-full h-64 border-dashed border-4 p-4 text-md">Dashboard</div>
         </section>
-
+        {{-- END MAIN --}}
     </main>
 </body>
 
