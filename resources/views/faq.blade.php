@@ -22,10 +22,12 @@
         </div>
         <div class="panel">
             <p>{{$faq->answer}}</p>
-            @auth
+            {{-- Policy --}}
+            @can('update', $faq)
             <button style="padding:.5rem; background:transparent; border:none; color:#4ba0ea"><a
                     href="{{route('faq.edit', $faq)}}">Edit</a></button>
-            @endauth
+            @endcan
+            {{-- END Policy --}}
         </div>
         <!-- end of one question -->
         @endforeach

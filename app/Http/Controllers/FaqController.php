@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faq;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FaqController extends Controller
 {
@@ -31,10 +32,10 @@ class FaqController extends Controller
             $properties = $request->validate([
                 'question' => ['required'],
                 'answer' => ['required'],
+                'user_id' => ['required'],
             ]);
 
-            Faq::create($properties);
-
+            Faq::create($properties,);
             return Redirect('faq');
         } else {
             return redirect('/login');
@@ -43,38 +44,33 @@ class FaqController extends Controller
 
     public function edit(Faq $faq)
     {
-        if (Auth::check()) {
-            return view('faq-edit', compact('faq'));
-        } else {
-            return redirect('/login');
-        }
+        // check if user is authorized to edit this faq using Gate
+        $this->authorize('update', $faq);
+
+        return view('faq-edit', compact('faq'));
     }
 
     public function update(Request $request, Faq $faq)
     {
-        if (Auth::check()) {
+        // check if user is authorized to update faq using Gate
+        $this->authorize('update', $faq);
 
-            $properties = $request->validate([
-                'question' => ['required'],
-                'answer' => ['required'],
-            ]);
+        $properties = $request->validate([
+            'question' => ['required'],
+            'answer' => ['required'],
+        ]);
 
-            $faq->update($properties);
+        $faq->update($properties);
 
-            return Redirect('faq');
-        } else {
-            return redirect('/login');
-        }
+        return Redirect('faq');
     }
 
     public function destroy(Faq $faq)
     {
-        if (Auth::check()) {
+        // Check if user is authorized to delete the faq using Gate
+        $this->authorize('delete', $faq);
 
-            $faq->delete();
-            return Redirect('faq');
-        } else {
-            return redirect('/login');
-        }
+        $faq->delete();
+        return Redirect('faq');
     }
 }

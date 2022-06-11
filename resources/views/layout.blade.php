@@ -51,11 +51,13 @@
                         <i class="fas fa-id-badge"></i>
                         <a href="/profile">Profile</a>
                     </li>
+
                     @guest
                     <li class="list-item">
                         <a href="/login">Log In</a>
                     </li>
                     @endguest
+
                     @auth
                     <li class="list-item">
                         <form action="{{ route('logout') }}" method="POST">
