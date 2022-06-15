@@ -5,6 +5,8 @@ namespace Tests\Feature\Auth;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -20,15 +22,20 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_authenticate_using_the_login_screen()
     {
-        $user = User::factory()->create();
+        Role::create(['name' => 'writer']);
+        $user = User::factory()->create([
+            'password' => Hash::make('Dani159753852?'),
+        ]);
+        
+        $user->assignRole('writer');
 
         $response = $this->post('/login', [
             'email' => $user->email,
             'password' => 'Dani159753852?',
         ]);
 
-        $this->assertAuthenticated();
         $response->assertRedirect('/');
+        $this->assertAuthenticated();
     }
 
     public function test_users_can_not_authenticate_with_invalid_password()

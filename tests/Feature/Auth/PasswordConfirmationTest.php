@@ -24,7 +24,7 @@ class PasswordConfirmationTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->post('/confirm-password', [
-            'password' => 'Dani159753852?',
+            'password' => 'OpenSesame',
         ]);
 
         $response->assertRedirect();

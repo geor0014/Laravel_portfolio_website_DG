@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Database\Factories\AdminFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
@@ -22,14 +23,7 @@ class AdminTest extends TestCase
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'writer']);
 
-       $admin =  User::create(
-        [
-            'name' => 'Ahab',
-            'email' => 'ahab@admin.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-        ]
-    );
+        $admin = User::factory()->create();
 
         $admin->assignRole('admin', 'writer');
 
@@ -45,14 +39,8 @@ class AdminTest extends TestCase
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'writer']);
 
-      $writer = User::create(
-        [
-            'name' => 'Ahab',
-            'email' => 'ahab@admin.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-        ]
-        );
+      $writer =  User::factory()->create();
+
 
         $writer->assignRole('writer');
 

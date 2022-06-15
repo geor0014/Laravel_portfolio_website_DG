@@ -25,15 +25,8 @@ class TestWriterEditPermisssion extends TestCase
 
         Role::create(['name' => 'writer']);
 
-        $writer = User::create(
-            [
-                'name' => 'Ahab',
-                'email' => 'ahab@admin.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-            ]
-            );
-    
+        $writer =  User::factory()->create();
+
             $writer->assignRole('writer');
       
             $this->actingAs($writer)->get('/faq')->assertSee('Add FAQ');
@@ -65,24 +58,14 @@ class TestWriterEditPermisssion extends TestCase
         Role::create(['name' => 'writer']);
 
         // Create  writer 1
-        $writer1 = User::create(
-            [
-                'name' => 'Ahab',
-                'email' => 'ahab@admin.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-            ]
-            );
+        $writer1 =  User::factory()->create();
+
 
             // Create  writer 2
-        $writer2 = User::create(
-            [
-                'name' => 'Ahab',
-                'email' => 'ahab@gmail.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-            ]
-            );
+        $writer2 =  User::factory()->create([
+            'email' => 'writer@admin.com',
+        ]);
+
 
      
             // Assign roles

@@ -20,14 +20,8 @@ class PermissionTest extends TestCase
             Role::create(['name' => 'writer']);
 
 
-            $writer = User::create(
-                [
-                    'name' => 'Ahab',
-                    'email' => 'ahab@admin.com',
-                    'email_verified_at' => now(),
-                    'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-                ]
-                );
+            $writer =  User::factory()->create();
+
 
                 $writer->assignRole('writer');
 
@@ -61,27 +55,17 @@ class PermissionTest extends TestCase
 
 
             // Create  admin
-            $admin = User::create(
-                [
-                    'name' => 'Ahab',
-                    'email' => 'ahab@admin.com',
-                    'email_verified_at' => now(),
-                    'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-                ]
-                );
+            $admin =  User::factory()->create();
+
 
                 // Assign admin
             $admin->assignRole('admin');
 
             // Create  writer
-            $writer = User::create(
-                [
-                    'name' => 'Ahab',
-                    'email' => 'ahab@gmail.com',
-                    'email_verified_at' => now(),
-                    'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-                ]
-                );
+            $writer = User::factory()->create([
+                'email' => 'writer@admin.com'
+            ]);
+
 
                 // Assign writer
             $writer->assignRole('writer');
