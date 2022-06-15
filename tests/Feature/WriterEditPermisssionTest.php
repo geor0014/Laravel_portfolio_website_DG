@@ -12,6 +12,51 @@ use Tests\TestCase;
 class TestWriterEditPermisssion extends TestCase
 {
     use RefreshDatabase;
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_if_writer_can_create_faq()
+    {
+        $response = $this->get('/faq');
+
+        $response->assertStatus(200);
+
+        Role::create(['name' => 'writer']);
+
+        $writer = User::create(
+            [
+                'name' => 'Ahab',
+                'email' => 'ahab@admin.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('OpenSesame', ['rounds' => 14]),
+            ]
+            );
+    
+            $writer->assignRole('writer');
+      
+            $this->actingAs($writer)->get('/faq')->assertSee('Add FAQ');
+
+            $this->actingAs($writer)
+                ->get(route('faq.create'))
+                ->assertStatus(200);
+
+            $this->actingAs($writer)
+                ->post(route('faq.store'), [
+                    'question' => 'BONNIE AND CLYDE 1967',
+                    'answer' => 'We Rob Banks',
+                    'user_id' => $writer->id,
+                ])
+                ->assertStatus(302);
+        
+           $this->assertDatabaseHas('faqs', [
+                'question' => 'BONNIE AND CLYDE 1967',
+                'answer' => 'We Rob Banks',
+            ]);
+    }
+    
+    
     public function test_if_writer_can_edit_only_the_faq_he_created(){
         $response = $this->get('/faq');
 
