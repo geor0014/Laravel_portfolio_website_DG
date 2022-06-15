@@ -13,19 +13,12 @@ class WriterTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_example_if_writer_role_is_assigned()
+    public function test_if_writer_role_is_assigned()
     {
 
         Role::create(['name' => 'writer']);
 
-        $writer = User::create(
-            [
-                'name' => 'Ahab',
-                'email' => 'ahab@admin.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-            ]
-            );
+        $writer = User::factory()->create();
     
             $writer->assignRole('writer');
 

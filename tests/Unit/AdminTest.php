@@ -16,15 +16,7 @@ class AdminTest extends TestCase
     {
         Role::create(['name' => 'admin']);
 
-        $admin =  User::create(
-            [
-                'name' => 'Ahab',
-                'email' => 'ahab@admin.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('OpenSesame', ['rounds' => 14]),
-            ]
-        );
-
+        $admin =  User::factory()->create();
         $admin->assignRole('admin');
 
         $this->assertTrue($admin->hasRole('admin'));
