@@ -1,122 +1,144 @@
-# laravel-portfolio-template
+# 4 - Testing
 
-Template project for the Laravel Portfolio Assignment
+## Test Plan
 
-## Getting Started
+### User stories:
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+- As an administrator, I want to be the only one who has permission to the admin dashboard so that I can manage roles, permissions, and users.
 
-### Prerequisites
+**Happy Path:** 
 
-In order to work on this project, you need to install the following:
+GIVEN that I have an administrator account 
 
-- Git
-- A localhost webserver (like XAMPP) or Docker (for Sail)
+WHEN I log in with that account
 
-### Installing
+THEN I can access the administrator dashboard so that I can mange roles, permissions, and users.
 
-This is a Laravel based app. Just follow the normal steps to setup your development environment.
+**Unhappy path:**
 
-### 1. Clone GitHub repo for this project locally
-The project is hosted on github, we can use git on your local computer to clone it from github onto your local computer.
+GIVEN I have a user’s account 
 
-```shell script
-$ git clone project-git-ssh-url
-```
+WHEN I log in with that account
 
-### 2. cd into your project
-You will need to be inside that project file to enter all of the rest of the commands in this tutorial. So remember to
-type `cd project-name` to move your terminal working location to the project file we just barely created. (Of course
-substitute “project-name” in the command above, with the name of the folder you created in the previous step).
+THEN I can still access the administrator dashboard and manage roles, permissions, users.
 
-### 3. Install Composer Dependencies
-Whenever you clone a new Laravel project you must now install all of the project dependencies. This is what actually
-installs Laravel itself, among other necessary packages to get started.
+**System Test:** 
 
-When we run composer, it checks the composer.json file which is submitted to the github repo and lists all of the
-composer (PHP) packages that your repo requires. Because these packages are constantly changing, the source code is
-generally not submitted to github, but instead we let composer handle these updates. So to install all this source code
-we run composer with the following command.
+The system tests check: 
 
-```shell script
-$ composer install
-```
+1. If a user with the role of admin is logged in and visits `/` he can see the “Admin Page” link in the navbar.
+2. If the user with the role of admin can access the `admin.index` route.
+3. If a user with the role of writer(anything except “admin”) is logged in and and visits `/` he **cannot**  see the “Admin Page” link in the navbar
+4. If the user with the role of writer **cannot** access the `admin.index` route 
 
-### 4. Create a copy of your .env file
-`.env` files are not generally committed to source control for security reasons. But there is a `.env.example` which is
-a template of the `.env` file that the project expects us to have. So we will make a copy of the `.env.example` file and
-create a `.env` file that we can start to fill out to do things like database configuration in the next few steps.
+The testing for the **Happy Path** can be found in the `test_if_admin_can_see_admin_dashboard` function in `AdminDashboardTest`.
 
-```shell script
-$ cp .env.example .env
-```
+The testing for the **Unhappy Path** can be found in the `test_if_writer_cannot_see_admin_dashboard` function in `AdminDashboardTest`.
 
-This will create a copy of the `.env.example` file in your project and name the copy simply `.env`.
+**Unit Test:** 
 
-### 5. Generate an app encryption key
-Laravel requires you to have an app encryption key which is generally randomly generated and stored in your `.env` file.
-app will use this encryption key to encode various elements of your application from cookies to password hashes and
-more.
+The unit test checks: 
 
-``` shell script
-$ php artisan key:generate
-```
+1. When the role of admin is assigned to an account that in fact the connection between that account and the “admin” role is made.
 
-If you check the `.env` file again, you will see that it now has a long random string of characters in the `APP_KEY`
-field. We now have a valid app encryption key.
+The Unit Test can be found in `test_if_admin_role_is_assigned` function in `AdminTest`
 
-### 6. In the .env file, add database information to allow Laravel to connect to the database
-We will want to allow Laravel to connect to the database that you just created in the previous step. To do this, we must
-add the connection credentials in the `.env` file and Laravel will handle the connection from there.
+---
 
-In the `.env` file fill in the `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` options to match
-the credentials of the database you want to connect to. This will allow us to run migrations and seed the database in
-the next step.
+- As an administrator, I want to be the only one who has permission to delete FAQs, so that I can manage what content is displayed on my website
 
-### 7. Migrate the database
-Once your credentials are in the `.env` file, now you can migrate your database.
+**Happy Path:**
 
-``` shell script
-$ php artisan migrate
-```
+GIVEN that I have and administrator’s account 
 
-It’s not a bad idea to check your database to make sure everything migrated the way you expected.
+WHEN a writer creates and FAQ
 
-### 8. Seed the database
-The repository has a seeding file setup, then now is the time to run the seed, which fills your database with starter
-or dummy data.
+THEN I want to be the only one who has permission to remove that FAQ
 
-After the migrations are complete, and you have the database structure required, then you can seed the database (which
-means add dummy data to it).
+**Unhappy Path:** 
 
-``` shell script
-$ php artisan db:seed
-```
+GIVEN that I have a writer’s account 
 
-## Running the tests
+WHEN I create an FAQ 
 
-The project comes with PHP_Codesniffer installed. In order to run it locally, type:
+THEN I am the one who has permissions to delete that FAQ
 
-``` shell script
-$ php ./vendor/bin/phpcs
-```
+**System Test:**
 
-## Built With
+The System test checks:
 
-* [Laravel](https://laravel.com/docs/) - The web framework used
-* [Composer](https://getcomposer.org/) - Dependency Management
+1. If when a user has the “writer” role assigned he can store FAQs to the database 
+2. If when a user has the “writer” role assigned and has created an FAQ he cannot ‘destroy’ that FAQ
+3. If when a user has the “admin” role assigned he can “destroy” any FAQ that he wishes.
 
-## Authors
+The testing for the **Happy Path** can be found in `test_if_admin_can_delete_faq` in the `AdminDeletePermissionTest`
 
-* **Daan de Waard** - *Initial work* - [dwaard](https://github.com/dwaard)
+The testing for the **Unhappy Path** can be found in `test_if_writer_cannot_delete_any_faq` in the `AdminDeletePermissionTest`
 
-## License
+**Unit Test:** 
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+The Unit Test checks:
 
-## Acknowledgments
+1. When the role of writer is assigned to an account that in fact the connection between that account and the “writer” role is made.
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+The test for the unit test can be found in the `WriterTest` in the `test_if_writer_role_is_assigned` function
 
+---
+
+- As a writer, I want to be the only one who has permission to edit the FAQs that I create, so that others cannot edit my FAQs
+
+**Happy Path:**
+
+GIVEN that I have a writer’s account and I am logged in
+
+WHEN I create an FAQ 
+
+THEN  I am the only one who has permission to edit that FAQ
+
+**Unhappy Path:**
+
+GIVEN that I have a writer’s account and I am logged in
+
+WHEN I create and FAQ
+
+THEN other users who have writer’s permissions can edit my FAQ
+
+**System Test:**
+
+The System Test checks:
+
+1. If when a user has the “writer” role assigned he can store FAQs to the database 
+2. If when another user that also has the role of “writer” creates a different FAQs and stores it to the database, both users can edit their own individual FAQs, but they cannot edit the FAQ of any other user.
+
+The testing for the **Happy Path** can be found in the `WriterEditPermissionTest` in the function `test_if_writer_can_create_faq`
+
+The testing for the **Unhappy Path** can be found in the `WriterEditPermissionTest` in the function `test_if_writer_can_edit_only_the_faq_he_created`
+
+**Unit Test:**
+
+The Unit Test checks: 
+
+1. If the `/faq` page can be accessed 
+2. When a users is assigned the role of writer and he visits the `/faq` he can access the link to “Add FAQ” at the bottom of the page.
+
+The unit test logic can be found in the `WriterCanCreateFAQTest` in the `test_if_users_with_writer_account_can_creeate_faq` function.
+
+## Screen Shot
+
+![2.png](./images/2.png)
+
+![2.png](./images/2%201.png)
+
+## Evaluation
+
+- The possible mistakes that can be detected by my tests are:
+    - We do not want users to have permissions to edit other users database entries.
+    - We do not want users to be able to delete database entries, only the admin should be able to do that.
+    - We do not want users to have access to the `admin.index` because it shows valuable and sensitive data that they should not be able to access or manipulate.
+- The possible mistakes that cannot be detected by my tests are:
+    - My tests do not check if the users has permission to grand him/her self administrator properties.
+- I can conclude that everything ‘works correctly’ because my tests cover all the basic functions of roles and permissions and I double-check after every action, for example, when an FAQ is created, I assert that the database in fact contains that FAQ. I tried to add as much of these in between assertions as I could without repeating myself. Furthermore, all my tests pass without any error, and given that I am testing basic functionality and using simple logic and assertions, I can conclude that the functionality that I intended to test is being tested. I think one possible improvement would be to restrict the `/register` path only for the admin, so that not everyone can register and add as many FAQs as they want. Similarly, another improvement that I plan on including in my project is to restrict the amount of FAQs an account can create, so that one account cannot add an infinite amount of database entries.
+
+## Proof for **Test effectivity**
+
+![tests.png](./images/tests.png)
