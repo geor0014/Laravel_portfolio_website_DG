@@ -30,8 +30,8 @@ class FaqController extends Controller
         if (Auth::check()) {
 
             $properties = $request->validate([
-                'question' => ['required'],
-                'answer' => ['required'],
+                'question' => ['required', 'string', 'max:255', 'min:3'],
+                'answer' => ['required', 'string', 'max:255', 'min:3'],
                 'user_id' => ['required'],
             ]);
 

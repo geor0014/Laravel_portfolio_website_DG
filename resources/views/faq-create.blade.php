@@ -18,14 +18,14 @@
 
             <br>
             <input type="text" name="question" placeholder="Question" style="width:14rem; padding:.5rem;
-                border:2px solid #4ba0ea; color:white; font-size:25px; background:transparent;"><br>
+                @if($errors->first('answer')) border:2px solid #FF0000  @else border:2px solid #4ba0ea @endif  ; color:white; font-size:25px; background:transparent;"><br>
             @error('question')
             <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('question')}}</p>
             @enderror
 
             <br>
             <input type="text" name="answer" placeholder="Answer" style="width:14rem; padding:.5rem;
-                border:2px solid #4ba0ea; color:white; font-size:25px;background:transparent;"><br><br>
+                 @if($errors->first('answer')) border:2px solid #FF0000  @else border:2px solid #4ba0ea @endif ; color:white; font-size:25px;background:transparent;"><br><br>
             @error('answer')
             <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('answer')}}</p>
             @enderror
