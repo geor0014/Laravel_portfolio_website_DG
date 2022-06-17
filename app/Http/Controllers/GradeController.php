@@ -15,6 +15,8 @@ class GradeController extends Controller
      */
     public function index()
     {
+        abort(500);
+
         $courses = Course::latest()->get();
 
         return view('grades.index', compact('courses'));
