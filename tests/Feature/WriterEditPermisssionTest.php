@@ -19,22 +19,29 @@ class TestWriterEditPermisssion extends TestCase
      */
     public function test_if_writer_can_create_faq()
     {
+        // Check if /faq works
         $response = $this->get('/faq');
 
         $response->assertStatus(200);
 
+        // Create Writer Role
         Role::create(['name' => 'writer']);
 
+        // Create Writer
         $writer =  User::factory()->create();
 
+        // Assign Writer Role
             $writer->assignRole('writer');
       
+            // Check if wrtier can see create button
             $this->actingAs($writer)->get('/faq')->assertSee('Add FAQ');
 
+            // Check if writer can access create page
             $this->actingAs($writer)
                 ->get(route('faq.create'))
                 ->assertStatus(200);
 
+                // Check if writer can store FAQ
             $this->actingAs($writer)
                 ->post(route('faq.store'), [
                     'question' => 'BONNIE AND CLYDE 1967',
@@ -43,6 +50,7 @@ class TestWriterEditPermisssion extends TestCase
                 ])
                 ->assertStatus(302);
         
+                // Check if Database has FAQ
            $this->assertDatabaseHas('faqs', [
                 'question' => 'BONNIE AND CLYDE 1967',
                 'answer' => 'We Rob Banks',
@@ -51,10 +59,12 @@ class TestWriterEditPermisssion extends TestCase
     
     
     public function test_if_writer_can_edit_only_the_faq_he_created(){
+        // Check if /faq works
         $response = $this->get('/faq');
 
         $response->assertStatus(200);
 
+        // Create Writer Role
         Role::create(['name' => 'writer']);
 
         // Create  writer 1
@@ -108,6 +118,20 @@ class TestWriterEditPermisssion extends TestCase
                 'answer' => "Here's Looking at You, Kid",
             ]);
 
+            // Writer 2 edits the faq he did not create
+            $this->actingAs($writer2)
+            ->put(route('faq.update', 1), [
+                'question' => 'BAD TIMES AT THE EL ROYALE',
+                'answer' => "Shit happens, get the whiskey!",
+                'user_id' => $writer1->id,
+            ])->assertStatus(403);
+
+            // Check if the faq was not updated
+            $this->assertDatabaseHas('faqs', [
+                'question' => 'SHE DONE HIM WRONG 1970',
+                'answer' => "Here's Looking at You, Kid",
+            ]);
+          
             // Writer 1 tries to edit the faq he didn't create
             $this->actingAs($writer1)->get('/faq/2/edit')->assertStatus(403);
 

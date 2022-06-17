@@ -66,7 +66,7 @@ class FaqPolicy
      */
     public function delete(User $user, Faq $faq)
     {
-        return $user->id == $faq->user_id;
+        return $user->hasRole('admin');
     }
 
     /**
