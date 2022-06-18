@@ -16,16 +16,18 @@
         <form action="{{route('faq.index')}}" method="POST">
             @csrf
 
+            <label for="question" style="color: #4ba0ea; font-size: 1.5rem">Question</label>
             <br>
-            <input type="text" name="question" placeholder="Question" style="width:14rem; padding:.5rem;
-                @if($errors->first('answer')) border:2px solid #FF0000  @else border:2px solid #4ba0ea @endif  ; color:white; font-size:25px; background:transparent;"><br>
+            <input type="text" name="question" placeholder="Ex: You want the truth?" style="width:14rem; padding:.5rem;
+                @if($errors->first('answer')) border:2px solid #FF0000  @else border:2px solid #4ba0ea @endif  ; color:white; font-size:19px; background:transparent; margin-top: 1rem; margin-bottom: 1rem"><br>
             @error('question')
             <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('question')}}</p>
             @enderror
 
+            <label for="answer" style="color: #4ba0ea; font-size: 1.5rem">Answer</label>
             <br>
-            <input type="text" name="answer" placeholder="Answer" style="width:14rem; padding:.5rem;
-                 @if($errors->first('answer')) border:2px solid #FF0000  @else border:2px solid #4ba0ea @endif ; color:white; font-size:25px;background:transparent;"><br><br>
+            <input type="text" name="answer" placeholder="Ex: You can't handle the truth!" style="width:14rem; padding:.5rem;
+                 @if($errors->first('answer')) border:2px solid #FF0000  @else border:2px solid #4ba0ea @endif ; color:white; font-size:19px;background:transparent; margin-top: 0.5rem"><br><br>
             @error('answer')
             <p style="color: red; padding:.5rem; text-decoration:none; '">{{$errors->first('answer')}}</p>
             @enderror
